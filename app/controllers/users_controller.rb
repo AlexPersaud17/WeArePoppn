@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      # redirect_to @user #dashboard
-      redirect_to new_party_path
+      redirect_to @user
     else
       @errors = @user.errors.full_messages
       render :new
