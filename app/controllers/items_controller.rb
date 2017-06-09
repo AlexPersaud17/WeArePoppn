@@ -4,11 +4,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
   end
 
   private
   def item_params
-    params.require(:item).permit(:name)
+    params.require(:item).permit(:name, :category)
   end
 end
