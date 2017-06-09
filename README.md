@@ -13,8 +13,8 @@ and drinks. Sign up create a party invite friends and have fun !
 [@AlexPersaud17](https://github.com/AlexPersaud17)
 
 ## Ruby version
-```Rails 5.0.3```
-```ruby 2.3.1p112```
+* ```Rails 5.0.3```
+* ```ruby 2.3.1p112```
 
 ## System Dependencies
 This application uses [Postgresql](https://www.postgresql.org/)
