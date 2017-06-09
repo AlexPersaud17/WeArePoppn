@@ -24,7 +24,7 @@
 
 <div class="item-container">
 
-  <% if @dishes%>
+  <% if @dishes.length != 0%>
     <h4>Dishes</h4>
     <ul>
       <% @dishes.each do |dish| %>
@@ -33,7 +33,7 @@
     </ul>
   <%end%>
 
-  <% if @drinks %>
+  <% if @drinks.length != 0 %>
     <h4>Drinks</h4>
     <ul>
       <% @drinks.each do |drink| %>
@@ -42,7 +42,7 @@
     </ul>
   <%end%>
 
-  <% if @supplies %>
+  <% if @supplies.length != 0 %>
     <h4>Supplies</h4>
     <ul>
       <% @supplies.each do |supply| %>
