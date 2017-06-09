@@ -5,7 +5,6 @@ class PartiesController < ApplicationController
 
   def create
     @party = current_user.parties.new(party_params)
-
     if @party.save
       redirect_to new_item_path
     else

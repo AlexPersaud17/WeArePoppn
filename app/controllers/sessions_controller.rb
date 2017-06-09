@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      # redirect_to user_path #dashboard
+      # redirect_to @user #dashboard
       redirect_to new_party_path
     else
       @errors = ["Invalid Email/Password"]

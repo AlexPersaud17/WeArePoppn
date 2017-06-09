@@ -178,6 +178,7 @@ DEPENDENCIES
   less-rails
   listen (~> 3.0.5)
   pg (~> 0.18)
+  pry
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.3)
