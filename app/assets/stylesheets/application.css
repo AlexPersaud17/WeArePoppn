@@ -34,11 +34,11 @@
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
    transition: all 0.35s;
-   color: #F05F40;
+   color: #black;
  }
  a:hover,
  a:focus {
-   color: #eb3812;
+   color: #235789;
  }
  h1,
  h2,
@@ -57,7 +57,7 @@
    background-color: #235789;
  }
  .bg-dark {
-   background-color: #235789;
+   background-color: grey;
    color: white;
  }
  .text-faded {
@@ -105,16 +105,17 @@
  }
  .navbar-default .nav > li > a:hover,
  .navbar-default .nav > li > a:focus:hover {
-   color: #F05F40;
+   color: #235789;
  }
  .navbar-default .nav > li.active > a,
  .navbar-default .nav > li.active > a:focus {
-   color: #F05F40 !important;
+   color: #235789 !important;
    background-color: transparent;
  }
  .navbar-default .nav > li.active > a:hover,
  .navbar-default .nav > li.active > a:focus:hover {
    background-color: transparent;
+   color: #235789
  }
  @media (min-width: 768px) {
    .navbar-default {
@@ -154,7 +155,7 @@
    }
    .navbar-default.affix .nav > li > a:hover,
    .navbar-default.affix .nav > li > a:focus:hover {
-     color: #F05F40;
+     color: #235789;
    }
  }
  header {
@@ -244,7 +245,8 @@
    color: white;
    opacity: 0;
    display: block;
-   background: rgba(240, 95, 64, 0.9);
+   /*hover for image background: */
+   background: #235789;
    position: absolute;
    bottom: 0;
    text-align: center;
@@ -299,8 +301,9 @@
    padding-left: 0;
  }
  .btn-default {
-   color: #222222;
-   background-color: white;
+   margin-top: 100px;
+   color: white;
+   background-color: #235789;
    border-color: white;
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
@@ -387,8 +390,8 @@
  .btn-primary.disabled.active,
  .btn-primary[disabled].active,
  fieldset[disabled] .btn-primary.active {
-   background-color: #F05F40;
-   border-color: #F05F40;
+   background-color: #235789;
+   border-color: #235789;
  }
  .btn-primary .badge {
    color: #F05F40;
@@ -427,4 +430,7 @@
  }
 #contact {
   padding-top: 30px;
+}
+.img-circle{
+  width: 250px;
 }
