@@ -1,9 +1,18 @@
 class ItemsController < ApplicationController
   def new
     @item = Item.new
+    @party = Party.find_by(id: params[:party_id])
+    @dishes = @party.items.where(category: "Food")
+    @drinks = @party.items.where(category: "Drink")
+    @supplies = @party.items.where(category: "Supply")
   end
 
   def create
+    @party = Party.find_by(id: params[:party_id])
+    params[:item][:name].split(", ").each do |item|
+      @item = @party.items.find_or_create_by(category: params[:item][:category], name: item)
+    end
+    redirect_to new_party_item_path(@party)
   end
 
   private
