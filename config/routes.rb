@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "users#new"
+  root 'welcome#index'
 
   resources :users, only: [:create, :new, :show]
   resources :parties
