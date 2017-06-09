@@ -429,8 +429,12 @@
    webkit-tap-highlight-color: #222222;
  }
 #contact {
+  background: #235789;
+  color: white;
   padding-top: 30px;
 }
 .img-circle{
   width: 250px;
 }
+
+/*235789 the blue color we use throughout the site*/
