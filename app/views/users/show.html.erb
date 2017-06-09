@@ -1,10 +1,11 @@
 <div class="container">
-  <h2>Welcome <%=@user.first_name%>!</h2>
+  <h2>Welcome <%=@user.first_name.capitalize%>!</h2>
   <div class ="row">
     <div class = "col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">My Parties</h3>
+          <%=link_to "Throw A Party", new_party_path%>
         </div>
         <div class="panel-body">
           <table class="table-striped table">

@@ -4,9 +4,9 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = current_user.parties.new(party_params)
+    @party = current_user.hosted_parties.new(party_params)
     if @party.save
-      redirect_to new_item_path
+      redirect_to new_party_item_path(@party)
     else
       @errors = @party.errors.full_messages
       render :new
