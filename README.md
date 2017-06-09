@@ -4,14 +4,13 @@ Popp'n is a managing tool for parties, from inviting friends to managing food
 and drinks. Sign up create a party invite friends and have fun !  
 
 ## Contributors
-@theasteve
-[GitHub](https://github.com/theasteve)
-@richardykim
-[GitHub](https://github.com/richardykim)
-@louisgaeta1
-[GitHub](https://github.com/louisgaeta1)
-@AlexPersaud17
-[GitHub](https://github.com/AlexPersaud17)
+[@theasteve](https://github.com/theasteve)
+
+[@richardykim](https://github.com/richardykim)
+
+[@louisgaeta1](https://github.com/louisgaeta1)
+
+[@AlexPersaud17](https://github.com/AlexPersaud17)
 
 ## Ruby version
 ```Rails 5.0.3```
