@@ -35,97 +35,98 @@
 </head>
 
 <body id="page-top">
+  <header>
+      <div class="header-content">
+          <div class="header-content-inner">
+              <h1 id="homeHeading">Start planning your next party with us</h1>
+              <hr>
+              <p></p>
+              <a href="#about" class="btn btn-default btn-xl page-scroll">Find Out More</a>
+          </div>
+      </div>
+  </header>
 
+  <section class="bg-primary" id="about">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 text-center">
+                  <h2 class="section-heading">We've got what you need!</h2>
+                  <hr class="light">
+                  <p class="text-faded">POPP'N is an application that can help you plan your next event! From inviting friends, to searching for party favors, it has everything you need to organize an awesome party!</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
-
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">Start planning your next party with us</h1>
-                <hr>
-                <p></p>
-                <a href="#about" class="btn btn-default btn-xl page-scroll">Find Out More</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">POPP'N is an application that can help you plan your next event! From inviting friends, to searching for party favors, it has everything you need to organize an awesome party!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-                        <%= image_tag 'portfolio/fullsize/7.jpg', class: "img-circle" %>
-                        <h3>Create a party</h3>
-                        <p class="text-muted">Choose a date and location to host an event</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-                        <%= image_tag 'portfolio/fullsize/8.jpg', class: "img-circle" %>
-                        <h3>Invite friends</h3>
-                        <p class="text-muted">Invite as many friends as you'd like to the gathering</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-                        <%= image_tag 'portfolio/fullsize/9.jpg', class: "img-circle" %>
-                        <h3>Supplies</h3>
-                        <p class="text-muted">Hosts can ask guests to bring food/supplies and guests may choose which item to bring</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-                        <%= image_tag 'portfolio/fullsize/10.jpg', class: "img-circle" %>
-                        <h3>Party</h3>
-                        <p class="text-muted">Your party is ready, have fun!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class= "text-center">
+  <section id="services">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                  <h2 class="section-heading">At Your Service</h2>
+                  <hr class="primary">
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box">
+                      <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                      <%= image_tag 'portfolio/fullsize/7.jpg', class: "img-circle" %>
+                      <h3>Create a party</h3>
+                      <p class="text-muted">Choose a date and location to host an event</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box">
+                      <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                      <%= image_tag 'portfolio/fullsize/8.jpg', class: "img-circle" %>
+                      <h3>Invite friends</h3>
+                      <p class="text-muted">Invite as many friends as you'd like to the gathering</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box">
+                      <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                      <%= image_tag 'portfolio/fullsize/9.jpg', class: "img-circle" %>
+                      <h3>Supplies</h3>
+                      <p class="text-muted">Hosts can ask guests to bring food/supplies and guests may choose which item to bring</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box">
+                      <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                      <%= image_tag 'portfolio/fullsize/10.jpg', class: "img-circle" %>
+                      <h3>Party</h3>
+                      <p class="text-muted">Your party is ready, have fun!</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class= "text-center">
+        <%if logged_in?%>
+          <a href="/users/show" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+        <%else%>
           <a href="/users/new" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
-        </div>
-    </section>
+        <%end%>
+      </div>
+  </section>
 
-    
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- jQuery -->
+  <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="js/creative.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Theme JavaScript -->
+  <script src="js/creative.min.js"></script>
 
 </body>
 
