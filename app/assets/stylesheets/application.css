@@ -19,8 +19,6 @@
  body {
    height: 100%;
    width: 100%;
-   padding-top: 60px;
-
  }
 
 
@@ -460,10 +458,8 @@
    webkit-tap-highlight-color: #222222;
  }
 footer{
-
-  height: 29%;
+  height: 14%;
   background: #5ABCB9;
-
   color: white;
   padding-top: 10px;
 }
@@ -483,6 +479,10 @@ footer{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.github-link{
+  color: white;
 }
 
 
