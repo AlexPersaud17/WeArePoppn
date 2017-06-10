@@ -6,6 +6,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
+          <%= link_to 'Cancel Your Party', @party, method: :delete%>
+          <%= link_to 'Edit Your Info', edit_party_path(@party) %>
         </div>
         <div class="panel-body">
           <table class="table">
@@ -44,13 +46,19 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Drinks</h3>
+              <%= link_to '+', new_party_item_path(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.drinks.each do |drink| %>
                 <tr>
                   <td><%=drink.name%></td>
+
+                  <td><button type="button" name="button">Add To List</button></td>
+                  <td><%= link_to '-', party_item_path(@party, drink), method: :delete%></td>
+
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
+
                 </tr>
                 <%end%>
               </table>
@@ -65,14 +73,19 @@
         <div class="col-md-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Food</h3>
+              <h3 class="panel-title">Dishes</h3>
+              <%= link_to '+', new_party_item_path(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.dishes.each do |dish|%>
                 <tr>
                   <td><%=dish.name%></td>
+
+                  <td><button type="button" name="button">Add To List</button></td>
+
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
+
                 </tr>
                 <%end%>
               </table>
@@ -88,13 +101,19 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
+              <%= link_to '+', new_party_item_path(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.supplies.each do |supply| %>
                 <tr>
                   <td><%=supply.name%></td>
+
+                  <td><button type="button" name="button">Add To List</button></td>
+                  <td><%= link_to '-', party_item_path(@party, supply), method: :delete%></td>
+
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
+
                 </tr>
                 <% end %>
               </table>
