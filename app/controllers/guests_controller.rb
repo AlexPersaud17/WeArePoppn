@@ -15,4 +15,12 @@ class GuestsController < ApplicationController
       render "new"
     end
   end
+
+  def destroy
+    @party = Party.find_by(id: params[:party_id])
+    @user = User.find_by(id: params[:id])
+    @guest = Guest.find_by(party: @party, user: @user)
+    @guest.destroy
+    redirect_to @party
+  end
 end
