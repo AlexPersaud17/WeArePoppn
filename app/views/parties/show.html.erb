@@ -1,0 +1,130 @@
+<div class="container">
+  <h2><%=@party.name%></h2>
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Details</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <th>Location</th>
+              <td><%=@party.location%></td>
+            </tr>
+            <tr>
+              <th>Date & Time</th>
+              <td><%=@party.date%></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Description</h3>
+        </div>
+        <div class="panel-body">
+          <p><%=@party.description%></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Drinks</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <% @party.drinks.each do |drink| %>
+                <tr>
+                  <td><%=drink.name%></td>
+                  <td><button type="button" name="button">Add To List</button></td>
+                </tr>
+                <%end%>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Food</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <% @party.dishes.each do |dish|%>
+                <tr>
+                  <td><%=dish.name%></td>
+                  <td><button type="button" name="button">Add To List</button></td>
+                </tr>
+                <%end%>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Supplies</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <% @party.supplies.each do |supply| %>
+                <tr>
+                  <td><%=supply.name%></td>
+                  <td><button type="button" name="button">Add To List</button></td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Guests</h3>
+        </div>
+        <div class="panel-body">
+
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Suggested Cocktails</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
