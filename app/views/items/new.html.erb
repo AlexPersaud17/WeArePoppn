@@ -1,4 +1,4 @@
-<div class="container">
+<div class="forms-container container">
 
   <%= form_for [@party, @item], html: {class: "form-horizontal"} do |f| %>
   <h2>What chu want</h2>
@@ -19,7 +19,13 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-3">
-        <a class="btn btn-default" href="/users/<%=current_user.id%>">I'm Done</a>
+        <a class="btn btn-default" href="/parties/<%=@party.id%>/guests/new">Add Guests</a>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <a class="btn btn-default" href="/parties/<%=@party.id%>">I'm Done</a>
       </div>
     </div>
   <% end %>
