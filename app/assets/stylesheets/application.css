@@ -433,7 +433,7 @@
 footer{
   background: #235789;
   color: white;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .img-circle{
   width: 250px;
@@ -445,5 +445,6 @@ footer{
   margin-left: auto;
   margin-right: auto;
 }
+
 
 /*235789 the blue color we use throughout the site*/
