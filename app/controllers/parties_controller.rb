@@ -11,6 +11,7 @@ class PartiesController < ApplicationController
   def create
     @party = current_user.hosted_parties.new(party_params)
     if @party.save
+      @party.guests.create(party: @party, user: current_user)
       redirect_to new_party_item_path(@party)
     else
       @errors = @party.errors.full_messages
