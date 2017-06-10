@@ -14,7 +14,12 @@
               <th>Party</th>
               <th>Date</th>
             </tr>
-
+            <% @user.hosted_parties.each do |party|%>
+            <tr>
+              <td><%=link_to party.name, party%></td>
+              <td><%=party.date%></td>
+            </tr>
+            <%end%>
           </table>
         </div>
         </div>
