@@ -37,7 +37,10 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 
 gem 'rb-readline'
-gem 'coffee-rails'
+
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
