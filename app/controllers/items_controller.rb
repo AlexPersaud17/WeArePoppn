@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
   def show
     item = Item.find(params[:id])
-    if item.category == "food"
+    if item.category == "Food"
       query = item.name.gsub(' ', '%20')
       search_uri = URI.parse("http://food2fork.com/api/search?key=#{ENV['FOOD_TO_FORK_KEY']}&q=#{query}")
       search_response = Net::HTTP.get_response(search_uri)
