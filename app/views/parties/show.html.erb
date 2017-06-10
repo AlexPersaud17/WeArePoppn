@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Party</h2>
+  <h2><%=@party.name%></h2>
   <div class="row">
 
     <div class="col-md-6">
@@ -11,11 +11,11 @@
           <table class="table">
             <tr>
               <th>Location</th>
-              <td>Ma House</td>
+              <td><%=@party.location%></td>
             </tr>
             <tr>
               <th>Date & Time</th>
-              <td>Now</td>
+              <td><%=@party.date%></td>
             </tr>
           </table>
         </div>
@@ -28,7 +28,7 @@
           <h3 class="panel-title">Description</h3>
         </div>
         <div class="panel-body">
-          <p>This Party is garbage</p>
+          <p><%=@party.description%></p>
         </div>
       </div>
     </div>
@@ -40,34 +40,27 @@
     <div class="col-md-4">
       <div class="row">
 
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Drinks</h3>
-              </div>
-              <div class="panel-body">
-                <table class="table">
-                  <tr>
-                    <td>Kool-Aid</td>
-                    <td><button type="button" name="button">Add To List</button></td>
-                  </tr>
-                  <tr>
-                    <td>Vodka</td>
-                    <td><button type="button" name="button">Add To List</button></td>
-                  </tr>
-                  <tr>
-                    <td>My Tears</td>
-                    <td><button type="button" name="button">Add To List</button></td>
-                  </tr>
-                </table>
-              </div>
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Drinks</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <% @party.drinks.each do |drink| %>
+                <tr>
+                  <td><%=drink.name%></td>
+                  <td><button type="button" name="button">Add To List</button></td>
+                </tr>
+                <%end%>
+              </table>
             </div>
           </div>
+        </div>
 
       </div>
 
       <div class="row">
-
 
         <div class="col-md-12">
           <div class="panel panel-default">
@@ -76,18 +69,12 @@
             </div>
             <div class="panel-body">
               <table class="table">
+                <% @party.dishes.each do |dish|%>
                 <tr>
-                  <td>Chicken Parm</td>
+                  <td><%=dish.name%></td>
                   <td><button type="button" name="button">Add To List</button></td>
                 </tr>
-                <tr>
-                  <td>Burritos</td>
-                  <td><button type="button" name="button">Add To List</button></td>
-                </tr>
-                <tr>
-                  <td>Flan</td>
-                  <td><button type="button" name="button">Add To List</button></td>
-                </tr>
+                <%end%>
               </table>
             </div>
           </div>
@@ -104,18 +91,12 @@
             </div>
             <div class="panel-body">
               <table class="table">
+                <% @party.supplies.each do |supply| %>
                 <tr>
-                  <td>Cups</td>
+                  <td><%=supply.name%></td>
                   <td><button type="button" name="button">Add To List</button></td>
                 </tr>
-                <tr>
-                  <td>Confetti</td>
-                  <td><button type="button" name="button">Add To List</button></td>
-                </tr>
-                <tr>
-                  <td>Drugs</td>
-                  <td><button type="button" name="button">Add To List</button></td>
-                </tr>
+                <% end %>
               </table>
             </div>
           </div>
@@ -124,86 +105,24 @@
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Suggested Cocktails</h3>
-        </div>
-        <div class="panel-body">
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
+    <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Guests</h3>
         </div>
         <div class="panel-body">
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
+
         </div>
       </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Suggested Cocktails</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+
     </div>
 
   </div>
