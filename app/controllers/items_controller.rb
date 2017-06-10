@@ -6,13 +6,13 @@ class ItemsController < ApplicationController
 
   def show
     item = Item.find(params[:id])
-    if item.category == "food"
+    if item.category == "Food"
       query = item.name.gsub(' ', '%20')
       search_uri = URI.parse("http://food2fork.com/api/search?key=#{ENV['FOOD_TO_FORK_KEY']}&q=#{query}")
       search_response = Net::HTTP.get_response(search_uri)
       search_results = JSON.parse(search_response.body)
-      recipe = search_results["recipes"][0]
-
+      recipe = search_results["recipes"][rand(1..search_results["recipes"].length)]
+      
       recipe_uri = URI.parse("http://food2fork.com/api/get?key=#{ENV['FOOD_TO_FORK_KEY']}&rId=#{recipe["recipe_id"]}")
       recipe_res = Net::HTTP.get_response(recipe_uri)
       recipe_data = JSON.parse(recipe_res.body)

@@ -1,22 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class = "col-md-4">
-      <h2><%= @recipe["title"]%></h2>
-      <figure class="figure">
-        <img class = "img-thumbnail" src="<%= @recipe["image_url"] %>">
-        <figcaption class="figure-caption">
-          <%= link_to "Full Recipe", @recipe["source_url"] %> <i class="fa fa-heart" aria-hidden="true"></i>
-        </figcaption>
-      </figure>
-    </div>
 
-    <div class="col-md-8">
-      <h2 class="text-center"> Ingredients: </h2>
-      <ul class="list-group">
-        <% @recipe["ingredients"].each do |ingredient| %>
-          <h6><li class="list-group-item"><%= ingredient %></li></h6>
-        <% end %>
-      </ul>
+<div class="background3">
+
+<%if @recipe %>
+  <div class="container forms-container">
+    <div class="row">
+      <div class = "col-md-4">
+        <h2><%= @recipe["title"]%></h2>
+        <figure class="figure">
+          <img class = "img-thumbnail" src="<%= @recipe["image_url"] %>">
+          <figcaption class="figure-caption">
+            <%= link_to "Full Recipe", @recipe["source_url"] %> <i class="fa fa-heart" aria-hidden="true"></i>
+          </figcaption>
+        </figure>
+      </div>
+
+
+      <div class="col-md-8">
+        <h2 class="text-center"> Ingredients: </h2>
+        <ul class="list-group">
+          <% @recipe["ingredients"].each do |ingredient| %>
+            <h6><li class="list-group-item"><%= ingredient %></li></h6>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
+
+<%end%>
 </div>
