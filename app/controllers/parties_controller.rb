@@ -31,8 +31,12 @@ class PartiesController < ApplicationController
   def update
     @party = Party.find_by(id: params[:id])
     @party.update_attributes(party_params)
-    @party.save
-    redirect_to "/parties/#{@party.id}"
+    if @party.save
+      redirect_to "/parties/#{@party.id}"
+    else
+      @errors = @party.errors.full_messages
+      render :edit
+    end
   end
 
   private
