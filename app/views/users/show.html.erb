@@ -59,20 +59,30 @@
     <div class="panel-body">
 
       <div class="panel-group">
+
+        <% @user.guests.each do |guest| %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse1">Some Party</a>
+              <a data-toggle="collapse" href="#collapse1"><%=guest.party.name%></a>
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
               <ul>
-
+                <% guest.list_items.each do |list_item| %>
+                <% if list_item.party_item.item.category == "Food"%>
+                  <li><%=link_to list_item.party_item.item.name, item_path(list_item.party_item.item) %></li>
+                  <% else %>
+                  <li><%=list_item.party_item.item.name%></li>
+                  <%end%>
+                <%end%>
               </ul>
             </div>
           </div>
         </div>
+        <%end%>
+
       </div>
 
     </div>
