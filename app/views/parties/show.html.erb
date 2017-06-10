@@ -130,13 +130,34 @@
     </div>
 
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Suggested Cocktails</h3>
-        </div>
-        <div class="panel-body">
-        </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Suggested Cocktails</h3>
       </div>
+      <div class="panel-body">
+        <% @suggested_cocktails.each do |cocktail|%>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><%=cocktail["name"]%></h4>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><%=cocktail["descriptionPlain"]%></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <ul>
+                      <%cocktail["ingredients"].each do |ingredient|%>
+                        <li><%=ingredient["text"]%></li>
+                      <%end%>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <%end%>
+      </div>
+    </div>
 
       <div class="panel panel-default">
         <div class="panel-heading">

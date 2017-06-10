@@ -2,6 +2,11 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
+    query = @party.drinks.sample.name.gsub(' ', '%20')
+    uri = URI.parse("http://addb.absolutdrinks.com/quickSearch/drinks/#{query}/?apiKey=#{ENV["DRINK_API_KEY"]}")
+    response = Net::HTTP.get_response(uri)
+    body = JSON.parse(response.body)
+    @suggested_cocktails = body["result"].sample(3)
   end
 
   def new
@@ -11,6 +16,7 @@ class PartiesController < ApplicationController
   def create
     @party = current_user.hosted_parties.new(party_params)
     if @party.save
+      @party.guests.create(party: @party, user: current_user)
       redirect_to new_party_item_path(@party)
     else
       @errors = @party.errors.full_messages
