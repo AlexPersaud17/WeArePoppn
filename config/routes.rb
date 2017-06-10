@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :items, only: [:create, :new] do
       resources :list_items, only: :create
     end
+    resources :guests, only: [:new, :create]
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :parties, only: :show
