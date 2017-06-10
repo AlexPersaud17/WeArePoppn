@@ -1,0 +1,27 @@
+<div class="container">
+
+  <%= form_for  html: {class: "form-horizontal"} do |f| %>
+  <h2>Who's Coming?</h2>
+    <div class="form-group">
+      <%=f.label :email,  class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%=f.email_field :email,  class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <%=f.submit "Add To List", class: "btn btn-default" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <a class="btn btn-default" href="/users/<%=current_user.id%>">I'm Done</a>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
