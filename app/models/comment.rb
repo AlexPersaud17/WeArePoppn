@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
   end
 
   def format_date
-   return self.date.strftime("%A, %B %C, %G")
+   return self.created_at.strftime("%B %C, %G")
   end
 end
