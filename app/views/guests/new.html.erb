@@ -1,0 +1,43 @@
+<div class="container">
+
+  <%= render :partial => "./errors"%>
+
+  <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "form-horizontal") do %>
+
+    <h2>Who's Coming?</h2>
+    <div class="form-group">
+      <%= label_tag(:title, nil, class: "col-sm-2 control-label") %>
+      <div class="col-sm-4">
+        <%= text_field_tag(:email, nil, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <%= submit_tag("I'm Done", class: "btn btn-default" ) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <a class="btn btn-default" href="/users/<%=current_user.id%>">I'm Done</a>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+
+<div class="item-container">
+
+  <% if @party.guests.length != 0%>
+    <h4>Guests!</h4>
+    <ul>
+      <% @party.guests.each do |guest| %>
+      <li><%= guest.user.full_name%></li>
+      <% end %>
+    </ul>
+  <%end%>
+
+</div>
