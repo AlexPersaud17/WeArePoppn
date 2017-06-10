@@ -1,0 +1,54 @@
+<div class="container">
+
+  <%= form_for [@party, @item], html: {class: "form-horizontal"} do |f| %>
+  <h2>What chu want</h2>
+    <div class="form-group">
+      <%=f.label :name,  class: "col-sm-2 control-label" %>
+      <div class="col-sm-4">
+        <%=f.text_field :name, class: "form-control"%>
+        <%=f.select :category,["Food", "Drink", "Supply"]%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-3">
+        <%=f.submit "Add To List", class: "btn btn-default" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <a class="btn btn-default" href="/users/<%=current_user.id%>">I'm Done</a>
+
+</div>
+
+<div class="item-container">
+
+  <% if @dishes.length != 0%>
+    <h4>Dishes</h4>
+    <ul>
+      <% @dishes.each do |dish| %>
+      <li><%= dish.name %></li>
+      <% end %>
+    </ul>
+  <%end%>
+
+  <% if @drinks.length != 0 %>
+    <h4>Drinks</h4>
+    <ul>
+      <% @drinks.each do |drink| %>
+      <li><%= drink.name %></li>
+      <% end %>
+    </ul>
+  <%end%>
+
+  <% if @supplies.length != 0 %>
+    <h4>Supplies</h4>
+    <ul>
+      <% @supplies.each do |supply| %>
+      <li><%= supply.name %></li>
+      <% end %>
+    </ul>
+  <%end%>
+
+</div>

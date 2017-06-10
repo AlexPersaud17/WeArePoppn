@@ -1,24 +1,30 @@
-# README
+# Popp'n
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Popp'n is a managing tool for parties, from inviting friends to managing food
+and drinks. Sign up create a party invite friends and have fun !  
 
-Things you may want to cover:
+## Contributors
+[@theasteve](https://github.com/theasteve)
 
-* Ruby version
+[@richardykim](https://github.com/richardykim)
 
-* System dependencies
+[@louisgaeta1](https://github.com/louisgaeta1)
 
-* Configuration
+[@AlexPersaud17](https://github.com/AlexPersaud17)
 
-* Database creation
+## Ruby version
+* ```Rails 5.0.3```
+* ```ruby 2.3.1p112```
 
-* Database initialization
+## System Dependencies
+This application uses [Postgresql](https://www.postgresql.org/)
 
-* How to run the test suite
+## Configuration
 
-* Services (job queues, cache servers, search engines, etc.)
+* Run ``` bundle install```
 
-* Deployment instructions
+## Database creation
 
-* ...
+* ```bundle exec rake db:create```
+* ```bundle exec rake db:migrate```
+* ```bundle exec rake db:seed```
