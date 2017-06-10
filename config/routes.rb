@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :list_items, only: :create
     end
     resources :guests, only: [:new, :create]
+
   end
   resources :items, only: :show
   resources :sessions, only: [:new, :create, :destroy]
