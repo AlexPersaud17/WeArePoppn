@@ -6,6 +6,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
+          <%= link_to 'Cancel Your Party', @party, method: :delete%>
+          <%= link_to 'Edit Your Info', edit_party_path(@party) %>
         </div>
         <div class="panel-body">
           <table class="table">
