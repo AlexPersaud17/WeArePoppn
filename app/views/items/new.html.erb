@@ -24,28 +24,28 @@
 
 <div class="item-container">
 
-  <% if @dishes.length != 0%>
+  <% if @party.dishes.length != 0%>
     <h4>Dishes</h4>
     <ul>
-      <% @dishes.each do |dish| %>
+      <% @party.dishes.each do |dish| %>
       <li><%= dish.name %></li>
       <% end %>
     </ul>
   <%end%>
 
-  <% if @drinks.length != 0 %>
+  <% if @party.drinks.length != 0 %>
     <h4>Drinks</h4>
     <ul>
-      <% @drinks.each do |drink| %>
+      <% @party.drinks.each do |drink| %>
       <li><%= drink.name %></li>
       <% end %>
     </ul>
   <%end%>
 
-  <% if @supplies.length != 0 %>
+  <% if @party.supplies.length != 0 %>
     <h4>Supplies</h4>
     <ul>
-      <% @supplies.each do |supply| %>
+      <% @party.supplies.each do |supply| %>
       <li><%= supply.name %></li>
       <% end %>
     </ul>
