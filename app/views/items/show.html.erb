@@ -1,0 +1,9 @@
+<h1> <%= @recipe["title"]%></h1>
+
+
+<img src="<%= @recipe["image_url"] %>">
+<ul>
+<% @recipe["ingredients"].each do |ingredient| %>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
