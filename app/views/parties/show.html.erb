@@ -152,7 +152,7 @@
             <% @party.comments.reverse.each do |comment| %>
               <p> <%= comment.body %></p>
               <ul><li><%= comment.guest.user.full_name%>
-                posted at: <%= comment.format_time%> </li></ul>
+                posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
             <%end %>
           <%end%>
         </div>
