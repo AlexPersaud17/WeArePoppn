@@ -21,6 +21,19 @@
    width: 100%;
  }
 
+.background1{
+  background-image: url('cuadros.png');
+}
+.background2{
+  background-image: url('glitch.png');
+}
+.background3{
+  background-image: url('naranjas.png');
+}
+.background4{
+  background-image: url('plaid.png');
+}
+
 
  .parallax {
     background-attachment: fixed;

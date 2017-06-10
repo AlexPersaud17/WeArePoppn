@@ -1,12 +1,14 @@
 class PartiesController < ApplicationController
 
   def show
-    @party = Party.find(params[:id])
-    query = @party.drinks.sample.name.gsub(' ', '%20')
-    uri = URI.parse("http://addb.absolutdrinks.com/quickSearch/drinks/#{query}/?apiKey=#{ENV["DRINK_API_KEY"]}")
-    response = Net::HTTP.get_response(uri)
-    body = JSON.parse(response.body)
-    @suggested_cocktails = body["result"].sample(3)
+    @party = Party.find_by(id: params[:id])
+    if @party.drinks.length > 0
+      query = @party.drinks.sample.name.gsub(' ', '%20')
+      uri = URI.parse("http://addb.absolutdrinks.com/quickSearch/drinks/#{query}/?apiKey=#{ENV["DRINK_API_KEY"]}")
+      response = Net::HTTP.get_response(uri)
+      body = JSON.parse(response.body)
+      @suggested_cocktails = body["result"].sample(3)
+    end
   end
 
   def new
