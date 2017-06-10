@@ -54,7 +54,6 @@
                 <tr>
                   <td><%=drink.name%></td>
 
-                  <td><button type="button" name="button">Add To List</button></td>
                   <td><%= link_to '-', party_item_path(@party, drink), method: :delete%></td>
 
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
@@ -82,7 +81,6 @@
                 <tr>
                   <td><%=dish.name%></td>
 
-                  <td><button type="button" name="button">Add To List</button></td>
                   <td><%= link_to '-', party_item_path(@party, dish), method: :delete%></td>
 
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
@@ -110,7 +108,6 @@
                 <tr>
                   <td><%=supply.name%></td>
 
-                  <td><button type="button" name="button">Add To List</button></td>
                   <td><%= link_to '-', party_item_path(@party, supply), method: :delete%></td>
 
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
@@ -141,13 +138,34 @@
     </div>
 
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Suggested Cocktails</h3>
-        </div>
-        <div class="panel-body">
-        </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Suggested Cocktails</h3>
       </div>
+      <div class="panel-body">
+        <% @suggested_cocktails.each do |cocktail|%>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><%=cocktail["name"]%></h4>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><%=cocktail["descriptionPlain"]%></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <ul>
+                      <%cocktail["ingredients"].each do |ingredient|%>
+                        <li><%=ingredient["text"]%></li>
+                      <%end%>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <%end%>
+      </div>
+    </div>
 
     </div>
 
