@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :new, :show]
   resources :parties do
-    resources :items, only: [:create, :new,] do
+    resources :items, only: [:create, :new, :destroy] do
       resources :list_items, only: :create
     end
-    resources :guests, only: [:new, :create]
+    resources :guests, only: [:new, :create, :destroy]
 
   end
   resources :items, only: :show
