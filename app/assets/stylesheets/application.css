@@ -19,9 +19,21 @@
  body {
    height: 100%;
    width: 100%;
-   padding-top: 60px;
 
  }
+
+.background1{
+  background-image: url('cuadros.png');
+}
+.background2{
+  background-image: url('glitch.png');
+}
+.background3{
+  background-image: url('naranjas.png');
+}
+.background4{
+  background-image: url('plaid.png');
+}
 
 
  .parallax {
