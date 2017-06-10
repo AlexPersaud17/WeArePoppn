@@ -13,11 +13,14 @@
  *= require_tree .
  *= require_self
  *= require bootstrap_and_overrides
+ *= require font-awesome
  */
  html,
  body {
    height: 100%;
    width: 100%;
+   padding-top: 60px;
+
  }
  body {
    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
@@ -445,5 +448,6 @@ footer{
   margin-left: auto;
   margin-right: auto;
 }
+
 
 /*235789 the blue color we use throughout the site*/
