@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :new, :show]
   resources :parties do
-    resources :items, only: [:create, :new]
-    resources :guests, only: [:new, :create]
+    resources :items
+    resources :guests
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :parties, only: :show
