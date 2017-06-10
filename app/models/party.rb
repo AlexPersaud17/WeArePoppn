@@ -4,6 +4,7 @@ class Party < ApplicationRecord
   has_many :items, through: :party_items
   has_many :guests, dependent: :destroy
   has_many :comments, through: :guests
+  has_many :attendees, through: :guests, source: :user
 
   validates :name, :description, :location, :date, presence: true
 

@@ -53,8 +53,12 @@
                 <% @party.drinks.each do |drink| %>
                 <tr>
                   <td><%=drink.name%></td>
+
                   <td><button type="button" name="button">Add To List</button></td>
                   <td><%= link_to '-', party_item_path(@party, drink), method: :delete%></td>
+
+                  <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
+
                 </tr>
                 <%end%>
               </table>
@@ -77,8 +81,11 @@
                 <% @party.dishes.each do |dish|%>
                 <tr>
                   <td><%=dish.name%></td>
+
                   <td><button type="button" name="button">Add To List</button></td>
-                  <td><%= link_to '-', party_item_path(@party, dish), method: :delete%></td>
+
+                  <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
+
                 </tr>
                 <%end%>
               </table>
@@ -101,8 +108,12 @@
                 <% @party.supplies.each do |supply| %>
                 <tr>
                   <td><%=supply.name%></td>
+
                   <td><button type="button" name="button">Add To List</button></td>
                   <td><%= link_to '-', party_item_path(@party, supply), method: :delete%></td>
+
+                  <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
+
                 </tr>
                 <% end %>
               </table>
@@ -113,15 +124,21 @@
       </div>
     </div>
 
-    <div class="col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Guests</h3>
-        </div>
-        <div class="panel-body">
-
-        </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Guests</h3>
       </div>
+      <div class="panel-body">
+        <ul>
+          <% @party.attendees.each do |guest| %>
+          <li><%=guest.full_name%></li>
+          <%end%>
+        </ul>
+
+      </div>
+    </div>
+
 
       <div class="panel panel-default">
         <div class="panel-heading">
