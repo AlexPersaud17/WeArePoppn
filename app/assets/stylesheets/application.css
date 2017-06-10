@@ -432,11 +432,19 @@
  }
 footer{
   background: #235789;
+  height: 29%;
   color: white;
   padding-top: 10px;
 }
 .img-circle{
   width: 250px;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
 }
 
 .forms-container{
