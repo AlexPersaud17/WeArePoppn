@@ -38,7 +38,7 @@ class PartiesController < ApplicationController
 
   def update
     @party = Party.find_by(id: params[:id])
-    @party.update_attributes(party_params)
+    @party.assign_attributes(party_params)
     if @party.save
       redirect_to "/parties/#{@party.id}"
     else
