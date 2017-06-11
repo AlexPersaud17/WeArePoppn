@@ -21,6 +21,7 @@
    width: 100%;
  }
 
+ 
 /*.panel-heading{
   background: red;
   background: -webkit-linear-gradient(red, yellow);
@@ -285,6 +286,8 @@
    header {
      min-height: 100%;
    }
+
+
    header .header-content {
      position: absolute;
      top: 50%;
@@ -515,12 +518,18 @@
  }
  body {
    webkit-tap-highlight-color: #222222;
+
  }
 footer{
   background: #5ABCB9;
   color: white;
   padding-top: 10px;
   padding-bottom: 15px;
+
+}
+
+#secret {
+  color: #5ABCB9;
 }
 .img-circle{
   width: 250px;

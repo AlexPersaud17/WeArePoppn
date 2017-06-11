@@ -174,7 +174,7 @@
         <div class="panel-body">
           <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments" do |f| %>
             <%= f.text_area :body, placeholder: 'Write a comment', rows: "4", style: 'width:100%;'%>
-            <%= f.submit %>
+            <%= f.submit "Comment" %>
           <%end%>
 
 
