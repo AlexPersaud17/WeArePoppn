@@ -73,15 +73,18 @@
           </div>
           <div id="collapse<%=guest.id%>" class="panel-collapse collapse">
             <div class="panel-body">
-              <ul>
+              <table class="table">
                 <% guest.list_items.each do |list_item| %>
+                <tr>
                 <% if list_item.party_item.item.category == "Food"%>
-                  <li><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></li>
+                    <td><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></td>
                   <% else %>
-                  <li><%=list_item.party_item.item.name.capitalize%></li>
+                    <td><%=list_item.party_item.item.name.capitalize%></td>
                   <%end%>
+                  <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete)%></td>
+                </tr>
                 <%end%>
-              </ul>
+              </table>
             </div>
           </div>
         </div>
