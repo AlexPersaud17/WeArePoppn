@@ -7,8 +7,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
+          <% if host?(@party) %>
           <%= link_to 'Cancel Your Party', @party, method: :delete%>
           <%= link_to 'Edit Your Info', edit_party_path(@party) %>
+          <% end %>
         </div>
         <div class="panel-body">
           <table class="table">
@@ -47,7 +49,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -55,7 +57,7 @@
                 <tr>
                   <td><%=drink.name%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
-                  <td><%= link_to '-', party_item_path(@party, drink), method: :delete%></td>
+                  <td><%= link_to '-', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
                 </tr>
                 <%end%>
               </table>
@@ -71,7 +73,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -79,7 +81,7 @@
                 <tr>
                   <td><%=dish.name%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
-                  <td><%= link_to '-', party_item_path(@party, dish), method: :delete%></td>
+                  <td><%= link_to '-', party_item_path(@party, dish), method: :delete if host?(@party)%></td>
                 </tr>
                 <%end%>
               </table>
@@ -95,7 +97,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -103,7 +105,7 @@
                 <tr>
                   <td><%=supply.name%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
-                  <td><%= link_to '-', party_item_path(@party, supply), method: :delete%></td>
+                  <td><%= link_to '-', party_item_path(@party, supply), method: :delete if host?(@party)%></td>
                 </tr>
                 <% end %>
               </table>
@@ -118,12 +120,12 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Guests</h3>
-        <%= link_to '+', new_party_guest_path(@party) %>
+        <%= link_to '+', new_party_guest_path(@party) if host?(@party)%>
       </div>
       <div class="panel-body">
         <ul>
           <% @party.attendees.each do |guest| %>
-            <li><%=guest.full_name%> <%= link_to '-', party_guest_path(@party, guest), method: :delete%></li>
+            <li><%=guest.full_name%> <%= link_to '-', party_guest_path(@party, guest), method: :delete if host?(@party)%></li>
           <%end%>
         </ul>
 
