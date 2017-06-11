@@ -21,7 +21,7 @@
       </div>
     <% end %>
 
-
+    <%if @party.items.length != 0%>
         <div class="col-md-3 add-item-list">
           <div class="panel panel-default">
 
@@ -54,6 +54,7 @@
 
           </div>
         </div>
+        <%end%>
 
 
   </div>

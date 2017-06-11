@@ -45,7 +45,7 @@
         <tr>
           <td><%=link_to party.name, party%></td>
           <td><%=party.date%></td>
-          <td><%=link_to '-', party_guest_path(party, @user), method: :delete unless host?(party)%></td>
+          <td><%=link_to 'X', party_guest_path(party, @user), method: :delete unless host?(party)%></td>
         </tr>
         <%end%>
       </table>
@@ -85,7 +85,12 @@
             </div>
           </div>
         </div>
+        <%else%>
+          <div class="panel-body">
+             <h3> Nothing yet, don't be a party <%= image_tag("pooper.png", height: '32', width: '32') %>er!</h3>
+          </div>
         <%end%>
+
         <%end%>
 
       </div>
