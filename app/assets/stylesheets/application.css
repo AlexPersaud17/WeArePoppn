@@ -21,8 +21,42 @@
    width: 100%;
  }
 
+/*.panel-heading{
+  background: red;
+  background: -webkit-linear-gradient(red, yellow);
+  background: -o-linear-gradient(red, yellow);
+  background: -moz-linear-gradient(red, yellow);
+  background: linear-gradient(red, yellow);
+  box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.5);
+}
+.panel-body{
+  background: red;
+  background: -webkit-linear-gradient(red, yellow);
+  background: -o-linear-gradient(red, yellow);
+  background: -moz-linear-gradient(red, yellow);
+  background: linear-gradient(red, yellow);
+  box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.5);
+}*/
+
+.add-item-list{
+  float: right;
+}
+
+.add-item{
+  float: left;
+}
+
+
+.lighten {
+ box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.darken {
+ box-shadow: inset 10000px 0 0 rgba(0, 0, 0, 0.5);
+}
+
 .background1{
-  background-image: url('cuadros.png');
+  background-image: url('balloons.jpeg');
 }
 .background2{
   background-image: url('glitch.png');
@@ -31,7 +65,19 @@
   background-image: url('naranjas.png');
 }
 .background4{
-  background-image: url('plaid.png');
+  background-image: url('plaid.jpg');
+}
+.background5{
+  background-image: url('ripples.jpg');
+}
+.background6{
+  background-image: url('wild-sea.png');
+}
+.background7{
+  background-image: url('cuttingboard.jpeg');
+}
+.background8{
+  background-image: url('summerdrinks.jpeg');
 }
 
 
@@ -471,10 +517,10 @@
    webkit-tap-highlight-color: #222222;
  }
 footer{
-  height: 14%;
   background: #5ABCB9;
   color: white;
   padding-top: 10px;
+  padding-bottom: 15px;
 }
 .img-circle{
   width: 250px;
@@ -496,6 +542,10 @@ footer{
 
 .github-link{
   color: white;
+  font-size: 16px;
+}
+.github-link:hover{
+  color: #ccffff;
 }
 
 
