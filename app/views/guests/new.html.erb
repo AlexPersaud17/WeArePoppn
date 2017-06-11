@@ -1,43 +1,41 @@
-<div class="container">
+<div class="background5 lighten">
+  <div class="container forms-container">
+    <%= render :partial => "./errors"%>
+    <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "form-horizontal add-item") do %>
+      <h2>Who's Coming?</h2>
+      <div class="form-group">
+        <%= label_tag(:email, nil, class: "col-sm-2 control-label") %>
+        <div class="col-sm-10">
+          <%= text_field_tag(:email, nil, class: "form-control") %>
+        </div>
+      </div>
 
-  <%= render :partial => "./errors"%>
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-14">
+          <%= submit_tag("Add Guest", class: "btn btn-default" ) %>
+          <%= link_to "I'm Done!", @party, class:"btn btn-default"%>
+        </div>
+      </div>
 
-  <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "form-horizontal") do %>
+    <% end %>
 
-    <h2>Who's Coming?</h2>
-    <div class="form-group">
-      <%= label_tag(:email, nil, class: "col-sm-2 control-label") %>
-      <div class="col-sm-4">
-        <%= text_field_tag(:email, nil, class: "form-control") %>
+    <div class="col-md-3 add-item-list">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Your Guestlist:</h1>
+        </div>
+        <div class="panel-body">
+          <% if @party.guests.length != 0%>
+            <ul>
+              <% @party.guests.each do |guest| %>
+              <% if guest != @party.host%>
+                <li><%= guest.user.full_name%></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <%end%>
+        </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <%= submit_tag("Add", class: "btn btn-default" ) %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <%= link_to "I'm Done!", @party, class:"btn btn-default"%>
-      </div>
-    </div>
-
-  <% end %>
-
-</div>
-
-
-<div class="item-container">
-
-  <% if @party.guests.length != 0%>
-    <h4>Guests!</h4>
-    <ul>
-      <% @party.guests.each do |guest| %>
-      <li><%= guest.user.full_name%></li>
-      <% end %>
-    </ul>
-  <%end%>
-
+  </div>
 </div>

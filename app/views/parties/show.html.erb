@@ -1,4 +1,4 @@
-<div class="background2">
+<div class="background4 lighten">
 <div class="forms-container container">
   <h2><%=@party.name%></h2>
   <div class="row">
@@ -53,9 +53,9 @@
               <table class="table">
                 <% @party.drinks.each do |drink| %>
                 <tr>
-                  <td><%=drink.name%></td>
+                  <td><%=drink.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
-                  <td><%= link_to '-', party_item_path(@party, drink), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, drink), method: :delete%></td>
                 </tr>
                 <%end%>
               </table>
@@ -77,9 +77,9 @@
               <table class="table">
                 <% @party.dishes.each do |dish|%>
                 <tr>
-                  <td><%=dish.name%></td>
+                  <td><%=dish.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
-                  <td><%= link_to '-', party_item_path(@party, dish), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, dish), method: :delete%></td>
                 </tr>
                 <%end%>
               </table>
@@ -101,9 +101,9 @@
               <table class="table">
                 <% @party.supplies.each do |supply| %>
                 <tr>
-                  <td><%=supply.name%></td>
+                  <td><%=supply.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
-                  <td><%= link_to '-', party_item_path(@party, supply), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, supply), method: :delete%></td>
                 </tr>
                 <% end %>
               </table>
@@ -123,7 +123,10 @@
       <div class="panel-body">
         <ul>
           <% @party.attendees.each do |guest| %>
-            <li><%=guest.full_name%> <%= link_to '-', party_guest_path(@party, guest), method: :delete%></li>
+
+            <% if guest != @party.host%>
+              <li><%=guest.full_name%>  -  <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete%></li>
+            <%end%>
           <%end%>
         </ul>
 
@@ -171,15 +174,25 @@
             <%= f.submit %>
           <%end%>
 
-          <% if @party.comments %>
-            <% @party.comments.reverse.each do |comment| %>
-              <p> <%= comment.body %></p>
-              <ul><li><%= comment.guest.user.full_name%>
-                posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
-            <%end %>
-          <%end%>
+
+
         </div>
       </div>
+      <% if @party.comments %>
+      <% @party.comments.reverse.each do |comment| %>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+              <p> - <%= comment.body %></p>
+              <ul><li><%= comment.guest.user.full_name%>
+                posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
+
+        </div>
+      </div>
+
+      <%end %>
+      <%end%>
 
     </div>
 

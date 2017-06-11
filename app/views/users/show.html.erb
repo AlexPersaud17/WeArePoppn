@@ -1,4 +1,4 @@
-<div class="background1">
+<div class="background1 lighten">
 
 <div class="forms-container container">
   <h2>Welcome <%=@user.first_name.capitalize%>!</h2>
@@ -73,9 +73,9 @@
               <ul>
                 <% guest.list_items.each do |list_item| %>
                 <% if list_item.party_item.item.category == "Food"%>
-                  <li><%=link_to list_item.party_item.item.name, item_path(list_item.party_item.item) %></li>
+                  <li><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></li>
                   <% else %>
-                  <li><%=list_item.party_item.item.name%></li>
+                  <li><%=list_item.party_item.item.name.capitalize%></li>
                   <%end%>
                 <%end%>
               </ul>

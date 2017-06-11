@@ -1,65 +1,60 @@
-<div class="forms-container container">
+<div class="background8 lighten">
+  <div class="forms-container container">
 
-  <%= form_for [@party, @item], html: {class: "form-horizontal"} do |f| %>
-  <h2>What chu want</h2>
-    <div class="form-group">
-      <%=f.label :name,  class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-        <%=f.text_field :name, class: "form-control"%>
-        <%=f.select :category,["Food", "Drink", "Supply"]%>
+
+    <%= form_for [@party, @item], html: {class: "form-horizontal add-item"} do |f| %>
+    <h2>What Would You Like To Have At Your Party?</h2>
+      <div class="form-group">
+        <%=f.label :name,  class: "col-sm-1 control-label" %>
+        <div class="col-sm-8">
+          <%=f.text_field :name, class: "form-control"%>
+          <%=f.select :category,["Food", "Drink", "Supplies"]%>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <%=f.submit "Add To List", class: "btn btn-default" %>
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-8">
+          <%=f.submit "Add To List", class: "btn btn-default" %>
+          <a class="btn btn-default" href="/parties/<%=@party.id%>/guests/new">Add Guests</a>
+          <a class="btn btn-default" href="/parties/<%=@party.id%>">I'm Done</a>
+        </div>
       </div>
-    </div>
+    <% end %>
 
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <a class="btn btn-default" href="/parties/<%=@party.id%>/guests/new">Add Guests</a>
-      </div>
-    </div>
+        <div class="col-md-3 add-item-list">
+          <div class="panel panel-default">
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <a class="btn btn-default" href="/parties/<%=@party.id%>">I'm Done</a>
-      </div>
-    </div>
-  <% end %>
+            <div class="panel-heading">
+              <h1 class="panel-title">Your List:</h1>
+            </div>
+
+            <div class="panel-body">
+              <% if @party.dishes.length != 0%>
+                <h3>Dishes</h3>
+                <% @party.dishes.each do |dish| %>
+                  <li><%=dish.name.capitalize%></li>
+                <%end%>
+              <%end%>
+
+              <% if @party.drinks.length != 0%>
+              <h3>Drinks</h3>
+              <% @party.drinks.each do |drink| %>
+              <li><%=drink.name.capitalize%></li>
+              <%end%>
+              <%end%>
+
+              <% if @party.supplies.length != 0%>
+                <h3>Supplies</h3>
+                <% @party.supplies.each do |supply| %>
+                  <li><%=supply.name.capitalize%></li>
+                <%end%>
+              <%end%>
+            </div>
+
+          </div>
+        </div>
 
 
-</div>
-
-<div class="item-container">
-
-  <% if @party.dishes.length != 0%>
-    <h4>Dishes</h4>
-    <ul>
-      <% @party.dishes.each do |dish| %>
-      <li><%= dish.name %></li>
-      <% end %>
-    </ul>
-  <%end%>
-
-  <% if @party.drinks.length != 0 %>
-    <h4>Drinks</h4>
-    <ul>
-      <% @party.drinks.each do |drink| %>
-      <li><%= drink.name %></li>
-      <% end %>
-    </ul>
-  <%end%>
-
-  <% if @party.supplies.length != 0 %>
-    <h4>Supplies</h4>
-    <ul>
-      <% @party.supplies.each do |supply| %>
-      <li><%= supply.name %></li>
-      <% end %>
-    </ul>
-  <%end%>
-
+  </div>
 </div>

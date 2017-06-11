@@ -17,6 +17,6 @@ class Party < ApplicationRecord
   end
 
   def supplies
-    items.where(category: "Supply")
+    items.where(category: "Supplies")
   end
 end
