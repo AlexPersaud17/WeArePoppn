@@ -44,6 +44,7 @@
         <tr>
           <td><%=link_to party.name, party%></td>
           <td><%=party.date%></td>
+          <td><%= link_to '-', party_guest_path(party, @user), method: :delete %></td>
         </tr>
         <%end%>
       </table>
