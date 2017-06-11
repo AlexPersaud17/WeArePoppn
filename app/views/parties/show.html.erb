@@ -8,8 +8,8 @@
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
           <% if host?(@party) %>
+          <%= link_to 'Edit Your Info', edit_party_path(@party) %> |
           <%= link_to 'Cancel Your Party', @party, method: :delete%>
-          <%= link_to 'Edit Your Info', edit_party_path(@party) %>
           <% end %>
         </div>
         <div class="panel-body">
@@ -53,15 +53,19 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
+              <%= link_to 'Add More Drinks', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.drinks.each do |drink| %>
                 <tr>
-                  <td><%=drink.name.capitalize%></td>
+                  <td><%=drink.name.capitalize %></td>
+                  <%if drink.party_items.find_by(party: @party).list_items.none? %>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
                   <td><%= link_to 'X', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
+                  <% else %>
+                  <td>Will be brought by: <%=drink.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
+                  <%end%>
                 </tr>
                 <%end%>
               </table>
@@ -77,15 +81,19 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to '+', new_party_item_path(@party) if host?(@party) %>
+              <%= link_to 'Add More Dishes', new_party_item_path(@party) if host?(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.dishes.each do |dish|%>
                 <tr>
                   <td><%=dish.name.capitalize%></td>
+                  <%if dish.party_items.find_by(party: @party).list_items.none? %>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
                   <td><%= link_to 'X', party_item_path(@party, dish), method: :delete if host?(@party)%></td>
+                  <% else %>
+                  <td>Will be brought by: <%=dish.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
+                  <%end%>
                 </tr>
                 <%end%>
               </table>
@@ -101,15 +109,19 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
+              <%= link_to 'Add More Supplies', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.supplies.each do |supply| %>
                 <tr>
                   <td><%=supply.name.capitalize%></td>
+                  <%if supply.party_items.find_by(party: @party).list_items.none? %>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
                   <td><%= link_to 'X', party_item_path(@party, supply), method: :delete if host?(@party)%></td>
+                  <% else %>
+                  <td>Will be brought by: <%=supply.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
+                  <%end%>
                 </tr>
                 <% end %>
               </table>
@@ -124,7 +136,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Guests</h3>
-        <%= link_to '+', new_party_guest_path(@party) if host?(@party)%>
+        <%= link_to 'Invite More Guests', new_party_guest_path(@party) if host?(@party)%>
       </div>
       <div class="panel-body">
         <ul>
