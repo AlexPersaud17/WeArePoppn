@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-md-6">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
           <% if host?(@party) %>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Description</h3>
         </div>
@@ -50,7 +50,7 @@
       <div class="row">
 
         <div class="col-md-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Drinks</h3>
               <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
@@ -74,7 +74,7 @@
       <div class="row">
 
         <div class="col-md-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Dishes</h3>
               <%= link_to '+', new_party_item_path(@party) if host?(@party) %>
@@ -98,7 +98,7 @@
       <div class="row">
 
         <div class="col-md-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
               <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
@@ -121,7 +121,7 @@
     </div>
 
   <div class="col-md-8">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Guests</h3>
         <%= link_to '+', new_party_guest_path(@party) if host?(@party)%>
@@ -137,13 +137,13 @@
     </div>
 
 <% if @suggested_cocktails%>
-    <div class="panel panel-default">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Suggested Cocktails</h3>
       </div>
       <div class="panel-body">
         <% @suggested_cocktails.each do |cocktail|%>
-            <div class="panel panel-default">
+            <div class="panel panel-info">
               <div class="panel-heading">
                 <h4 class="panel-title"><%=cocktail["name"]%></h4>
               </div>
@@ -167,7 +167,7 @@
     </div>
     <%end%>
 
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Comments</h3>
         </div>
@@ -184,7 +184,7 @@
       <% if @party.comments %>
       <% @party.comments.reverse.each do |comment| %>
 
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-body">
 
               <p> - <%= comment.body %></p>
