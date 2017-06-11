@@ -60,7 +60,7 @@
                 <% @party.drinks.each do |drink| %>
                 <tr>
                   <td><%=drink.name.capitalize%></td>
-                  <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
+                  <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))  %></td>
                   <td><%= link_to 'X', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
                 </tr>
                 <%end%>
@@ -187,7 +187,7 @@
       <div class="panel panel-info">
         <div class="panel-body">
 
-              <p> - <%= comment.body %></p>
+              <p> <%= comment.body %></p>
               <ul><li><%= comment.guest.user.full_name%>
                 posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
 
