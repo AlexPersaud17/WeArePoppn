@@ -28,7 +28,7 @@
     <div class="form-group">
       <%=label_tag "Date & Time", nil, class: "col-sm-2 control-label" %>
       <div class="col-sm-4">
-        <%=datetime_local_field "party[date]", @party.date, class: "form-control"%>
+        <%=datetime_local_field_tag "party[date]", @party.date.strftime("%FT%R"), class: "form-control"%>
       </div>
     </div>
 

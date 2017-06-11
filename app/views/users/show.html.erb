@@ -39,11 +39,13 @@
         <tr>
           <th>Party</th>
           <th>Date</th>
+          <th>Opt Out</th>
         </tr>
         <% @user.attended_parties.each do |party|%>
         <tr>
           <td><%=link_to party.name, party%></td>
           <td><%=party.date%></td>
+          <td><%=link_to '-', party_guest_path(party, @user), method: :delete unless host?(party)%></td>
         </tr>
         <%end%>
       </table>
