@@ -7,8 +7,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
+          <% if host?(@party) %>
           <%= link_to 'Cancel Your Party', @party, method: :delete%>
           <%= link_to 'Edit Your Info', edit_party_path(@party) %>
+          <% end %>
         </div>
         <div class="panel-body">
           <table class="table">
@@ -18,7 +20,11 @@
             </tr>
             <tr>
               <th>Date & Time</th>
-              <td><%=@party.date%></td>
+              <td><%=@party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
+            </tr>
+            <tr>
+              <th>Hosted By:</th>
+              <td><%=@party.host.full_name%></td>
             </tr>
           </table>
         </div>
@@ -47,7 +53,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -55,7 +61,7 @@
                 <tr>
                   <td><%=drink.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, drink), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
                 </tr>
                 <%end%>
               </table>
@@ -71,7 +77,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party) %>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -79,7 +85,7 @@
                 <tr>
                   <td><%=dish.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, dish), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, dish), method: :delete if host?(@party)%></td>
                 </tr>
                 <%end%>
               </table>
@@ -95,7 +101,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to '+', new_party_item_path(@party) %>
+              <%= link_to '+', new_party_item_path(@party) if host?(@party)%>
             </div>
             <div class="panel-body">
               <table class="table">
@@ -103,7 +109,7 @@
                 <tr>
                   <td><%=supply.name.capitalize%></td>
                   <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, supply), method: :delete%></td>
+                  <td><%= link_to 'X', party_item_path(@party, supply), method: :delete if host?(@party)%></td>
                 </tr>
                 <% end %>
               </table>
@@ -118,15 +124,12 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Guests</h3>
-        <%= link_to '+', new_party_guest_path(@party) %>
+        <%= link_to '+', new_party_guest_path(@party) if host?(@party)%>
       </div>
       <div class="panel-body">
         <ul>
           <% @party.attendees.each do |guest| %>
-
-            <% if guest != @party.host%>
-              <li><%=guest.full_name%>  -  <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete%></li>
-            <%end%>
+              <li><%=guest.full_name%>  -  <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete if host?(@party) && guest != @party.host%>%></li>
           <%end%>
         </ul>
 

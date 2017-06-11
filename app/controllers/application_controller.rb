@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find_by_id(session[:user_id])
   end
-  
+
   def logged_in?
     !!current_user
   end
@@ -16,7 +16,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def host?(party)
+    if logged_in?
+      return party.host == current_user
+    end
+    false
+  end
+
   helper_method :unauthorized
   helper_method :current_user
   helper_method :logged_in?
+  helper_method :host?
 end
