@@ -18,7 +18,7 @@
             <% @user.hosted_parties.each do |party|%>
             <tr>
               <td><%=link_to party.name, party%></td>
-              <td><%=party.date%></td>
+              <td><%=party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
             </tr>
             <%end%>
           </table>
@@ -44,7 +44,7 @@
         <% @user.attended_parties.each do |party|%>
         <tr>
           <td><%=link_to party.name, party%></td>
-          <td><%=party.date%></td>
+          <td><%=party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
           <td><%=link_to '-', party_guest_path(party, @user), method: :delete unless host?(party)%></td>
         </tr>
         <%end%>
