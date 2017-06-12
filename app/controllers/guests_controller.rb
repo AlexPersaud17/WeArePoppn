@@ -21,6 +21,8 @@ class GuestsController < ApplicationController
     @user = User.find_by(id: params[:id])
     @guest = Guest.find_by(party: @party, user: @user)
     @guest.destroy
-    redirect_to host?(@party) ?  @party : @user
+    if !request.xhr?
+      redirect_to host?(@party) ?  @party : @user
+    end
   end
 end
