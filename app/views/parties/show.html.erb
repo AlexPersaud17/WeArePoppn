@@ -51,22 +51,19 @@
 
         <div class="col-md-12">
           <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading drinks-panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to 'Add More Drinks', new_party_item_path(@party) if host?(@party)%>
+              <%= link_to 'Add More Drinks', (new_party_item_path(@party) if host?(@party)), class: "add-drinks-button"%>
+              <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Drink" %>
+                <%=f.submit "Add To List", class: "add-drinks-submit", data: { disable_with: false }%>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
                 <% @party.drinks.each do |drink| %>
-                <tr>
-                  <td><%=drink.name.capitalize %></td>
-                  <%if drink.party_items.find_by(party: @party).list_items.none? %>
-                  <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
-                  <% else %>
-                  <td>Will be brought by: <%=drink.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
-                  <%end%>
-                </tr>
+                  <%= render template: 'items/_drink_added', locals: {drink: drink, party: @party} %>
                 <%end%>
               </table>
             </div>
@@ -79,9 +76,9 @@
 
         <div class="col-md-12">
           <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading dish-panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to 'Add More Dishes', new_party_item_path(@party) if host?(@party) %>
+              <%= link_to 'Add More Dishes', (new_party_item_path(@party) if host?(@party)), class: "add-dish-button" %>
             </div>
             <div class="panel-body">
               <table class="table">

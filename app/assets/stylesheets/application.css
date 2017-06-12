@@ -21,6 +21,10 @@
    width: 100%;
  }
 
+ .add-drinks-form{
+   display: none;
+ }
+
 
 /*.panel-heading{
   background: red;

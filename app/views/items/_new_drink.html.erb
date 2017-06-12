@@ -1,0 +1,5 @@
+<%= form_for [party, item], html:{class: "add-drinks-form" } do |f| %>
+  <%=f.text_field :name%>
+  <%=f.hidden_field :category, value: "Drink" %>
+  <%=f.submit "Add To List", class: "add-drinks-submit" %>
+<% end %>
