@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :parties do
     resources :comments, only: [:new, :create]
     resources :items, only: [:create, :new, :destroy] do
-      resources :list_items, only: :create
+      resources :list_items, only: [:create, :destroy]
     end
     resources :guests, only: [:new, :create, :destroy]
   end
