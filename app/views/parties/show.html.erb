@@ -78,7 +78,6 @@
 
             <div id="drinks-table" class="panel-body">
               <table class="table item-list-table">
-
                 <% @party.drinks.reverse.each do |drink| %>
                 <tr>
                   <%= render template: 'items/_item_added', locals: {item: drink, party: @party} %>
@@ -108,7 +107,9 @@
             <div class="panel-body">
               <table class="table item-list-table">
                 <% @party.dishes.reverse.each do |dish|%>
+                <tr>
                   <%= render template: 'items/_item_added', locals: {item: dish, party: @party} %>
+                <tr>
                 <%end%>
               </table>
             </div>
@@ -133,7 +134,9 @@
             <div class="panel-body">
               <table class="table item-list-table">
                 <% @party.supplies.reverse.each do |supply| %>
+                <tr>
                   <%= render template: 'items/_item_added', locals: {item: supply, party: @party} %>
+                <tr>
                 <% end %>
               </table>
             </div>
