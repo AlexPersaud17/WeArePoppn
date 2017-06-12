@@ -1,6 +1,6 @@
 <div class="background1 lighten">
 
-<div class="forms-container container">
+<div class="forms-container container pad-below">
   <h2>Welcome <%=@user.first_name.capitalize%>!</h2>
   <div class ="row">
     <div class = "col-md-12">
@@ -73,20 +73,20 @@
           <div id="collapse<%=guest.id%>" class="panel-collapse collapse">
             <div class="panel-body">
               <% if guest.list_items.length > 0 %>
-              <table class="table">
+                <table class="table">
                 <% guest.list_items.each do |list_item| %>
-                <tr>
-                <% if list_item.party_item.item.category == "Food"%>
-                    <td><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></td>
-                  <% else %>
-                    <td><%=list_item.party_item.item.name.capitalize%></td>
-                  <%end%>
-                  <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete, class: "remove")%></td>
-                </tr>
+                  <tr>
+                    <% if list_item.party_item.item.category == "Food"%>
+                      <td><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></td>
+                    <% else %>
+                      <td><%=list_item.party_item.item.name.capitalize%></td>
+                    <%end%>
+                    <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete, class: "remove")%></td>
+                  </tr>
                 <%end%>
               </table>
               <%else%>
-              <%= render :partial => './guests/empty_list' %>
+                <%= render :partial => './guests/empty_list' %>
               <%end%>
             </div>
           </div>
