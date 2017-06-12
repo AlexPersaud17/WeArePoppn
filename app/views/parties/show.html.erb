@@ -136,7 +136,7 @@
     <div class="panel panel-info">
       <div class="panel-heading guest-panel-heading">
         <h3 class="panel-title">Guests</h3>
-        <%= link_to 'Invite More Guests', (new_party_guest_path(@party) if host?(@party)), class: "add-guest-button"%>
+        <%= link_to 'Invite More Guests', (new_party_guest_path(@party)), class: "add-guest-button" if host?(@party)%>
         <div class="append-email-error"></div>
         <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "add-guest-form") do %>
           <%= label_tag(:email) %>
@@ -147,7 +147,7 @@
       <div class="panel-body">
         <ul>
           <% @party.attendees.reverse.each do |guest| %>
-              <li><%=guest.full_name%>     <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete if host?(@party) && guest != @party.host%></li>
+            <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
           <%end%>
         </ul>
 
