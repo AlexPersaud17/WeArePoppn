@@ -184,29 +184,22 @@
           <h3 class="panel-title">Comments</h3>
         </div>
         <div class="panel-body">
-          <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments" do |f| %>
+          <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments", html: {id: "add-comment"} do |f| %>
             <%= f.text_area :body, placeholder: 'Write a comment', rows: "4", style: 'width:100%;'%>
-            <%= f.submit "Comment" %>
+            <%= f.submit "Comment", data: { disable_with: false } %>
           <%end%>
 
-
-
         </div>
       </div>
+
       <% if @party.comments %>
+      <div id="comment-container">
       <% @party.comments.reverse.each do |comment| %>
 
-      <div class="panel panel-info">
-        <div class="panel-body">
-
-              <p> <%= comment.body %></p>
-              <ul><li><%= comment.guest.user.full_name%>
-                posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
-
-        </div>
-      </div>
+      <%= render :partial => "./comments/comment", locals: {comment: comment} %>
 
       <%end %>
+      </div>
       <%end%>
 
     </div>
