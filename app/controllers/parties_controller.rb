@@ -2,6 +2,7 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find_by(id: params[:id])
+    @location = @party.location.gsub(' ', '%20')
     if @party.drinks.length > 0
       query = @party.drinks.sample.name.gsub(' ', '%20')
       uri = URI.parse("http://addb.absolutdrinks.com/quickSearch/drinks/#{query}/?apiKey=#{ENV["DRINK_API_KEY"]}")
