@@ -62,7 +62,7 @@
           <div class="panel panel-info">
             <div class="panel-heading drinks-panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to 'Add More Drinks', (new_party_item_path(@party) if host?(@party)), class: "add-drinks-button"%>
+              <%= link_to 'Add More Drinks', (new_party_item_path(@party) ), class: "add-drinks-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Drink" %>
@@ -87,7 +87,7 @@
           <div class="panel panel-info">
             <div class="panel-heading dish-panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to 'Add More Dishes', (new_party_item_path(@party) if host?(@party)), class: "add-dish-button" %>
+              <%= link_to 'Add More Dishes', (new_party_item_path(@party) ), class: "add-dish-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-dish-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Food" %>
@@ -112,7 +112,7 @@
           <div class="panel panel-info">
             <div class="panel-heading supply-panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to 'Add More Supplies', (new_party_item_path(@party) if host?(@party)), class: "add-supply-button"%>
+              <%= link_to 'Add More Supplies', (new_party_item_path(@party) ), class: "add-supply-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-supply-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Supplies" %>
