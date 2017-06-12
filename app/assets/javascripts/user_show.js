@@ -2,7 +2,7 @@ $(document).ready(function(){
   $(".delete").on("click",function(e){
     e.preventDefault()
     var $row = $(this).parent().parent()
-    className = $row.attr("class")
+    var className = $row.attr("class")
     var url = $(this).attr("href")
     $.ajax({
       method: "DELETE",

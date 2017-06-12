@@ -1,12 +1,12 @@
 $(document).ready(function(event){
-  $(".add-drinks-button").on("click", (e) => {
+  $(".add-drinks-button").on("click", function(e){
     e.preventDefault();
     $(".add-drinks-form").show();
     $(".add-drinks-form").trigger("reset");
     $(".add-drinks-button").hide();
   })
 
-  $(".drinks-panel-heading").on("submit", ".add-drinks-form", (e) => {
+  $(".drinks-panel-heading").on("submit", ".add-drinks-form", function(e){
     e.preventDefault();
     var data = $(e.target).serialize()
     var url = $(e.target).attr("action")
@@ -21,14 +21,14 @@ $(document).ready(function(event){
     })
   })
 
-  $(".add-dish-button").on("click", (e) => {
+  $(".add-dish-button").on("click", function(e){
     e.preventDefault();
     $(".add-dish-form").show();
     $(".add-dish-form").trigger("reset");
     $(".add-dish-button").hide();
   })
 
-  $(".dish-panel-heading").on("submit", ".add-dish-form", (e) => {
+  $(".dish-panel-heading").on("submit", ".add-dish-form", function(e){
     e.preventDefault();
     var data = $(e.target).serialize()
     var url = $(e.target).attr("action")
@@ -43,14 +43,14 @@ $(document).ready(function(event){
     })
   })
 
-  $(".add-supply-button").on("click", (e) => {
+  $(".add-supply-button").on("click", function(e){
     e.preventDefault();
     $(".add-supply-form").show();
     $(".add-supply-form").trigger("reset");
     $(".add-supply-button").hide();
   })
 
-  $(".supply-panel-heading").on("submit", ".add-supply-form", (e) => {
+  $(".supply-panel-heading").on("submit", ".add-supply-form", function(e){
     e.preventDefault();
     var data = $(e.target).serialize()
     var url = $(e.target).attr("action")
