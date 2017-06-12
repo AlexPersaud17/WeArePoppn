@@ -42,11 +42,10 @@
           <th>Opt Out</th>
         </tr>
         <% @user.attended_parties.each do |party|%>
-        <tr>
+        <tr class=<%="party#{party.id}"%>>
           <td><%=link_to party.name, party%></td>
           <td><%=party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
-          <td><%=link_to 'X', party_guest_path(party, @user), method: :delete unless host?(party)%></td>
-
+          <td><%=link_to 'X', party_guest_path(party, @user), class: "delete" unless host?(party)%></td>
         </tr>
         <%end%>
       </table>
@@ -65,8 +64,7 @@
       <div class="panel-group">
 
         <% @user.guests.each do |guest| %>
-        <% if guest.list_items.length > 0 %>
-        <div class="panel panel-info">
+        <div class="panel panel-info party<%=guest.party.id%>">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" href="#collapse<%=guest.id%>"><%=guest.party.name%></a>
@@ -74,6 +72,7 @@
           </div>
           <div id="collapse<%=guest.id%>" class="panel-collapse collapse">
             <div class="panel-body">
+              <% if guest.list_items.length > 0 %>
               <table class="table">
                 <% guest.list_items.each do |list_item| %>
                 <tr>
@@ -85,15 +84,15 @@
                   <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete)%></td>
                 </tr>
                 <%end%>
+                <%else%>
+                <div class="panel-body">
+                  <h3> Nothing yet, don't be a party <%= image_tag("pooper.png", height: '32', width: '32') %>er!</h3>
+                </div>
+                <%end%>
               </table>
             </div>
           </div>
         </div>
-        <%else%>
-          <div class="panel-body">
-             <h3> Nothing yet, don't be a party <%= image_tag("pooper.png", height: '32', width: '32') %>er!</h3>
-          </div>
-        <%end%>
 
         <%end%>
 
