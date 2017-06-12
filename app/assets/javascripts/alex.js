@@ -82,7 +82,7 @@ $(document).ready(function(event){
       url: url
     }).done(function(res){
       if(!res.includes("email-fail-error")){
-        $(e.target).parent().siblings(".panel-body").children("ul").prepend(res)
+        $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
         $(".add-guest-form").hide();
         $(".add-guest-button").show();
         $(".append-email-error").children().remove();
@@ -94,5 +94,34 @@ $(document).ready(function(event){
       }
     })
   })
+
+  $(".guest-list-table").on("click", ".uninvite-button", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var url = $(e.target).attr("href")
+    var $row = $(e.target).parent().parent()
+    $.ajax({
+      method: "delete",
+      url: url
+    }).done(function(res){
+      $row.remove();
+    })
+  })
+
+  $(".item-list-table").on("click", ".remove-item", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var url = $(e.target).attr("href")
+    var $row = $(e.target).parent().parent()
+    $.ajax({
+      method: "delete",
+      url: url
+    }).done(function(res){
+      $row.remove();
+    })
+  })
+
+
+
 
 });

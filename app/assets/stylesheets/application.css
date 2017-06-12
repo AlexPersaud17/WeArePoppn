@@ -21,7 +21,7 @@
    width: 100%;
  }
 
- .add-drinks-form, .add-dish-form, .add-supply-form, .add-guest-form{
+ .add-drinks-form, .add-dish-form, .add-supply-form, .add-guest-form, .edit-party-form{
    display: none;
  }
 

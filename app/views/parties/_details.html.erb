@@ -1,0 +1,19 @@
+<table class="table" id="party-details">
+  <tr>
+    <th>Location</th>
+    <td><%=party.location%></td>
+  </tr>
+  <tr>
+    <th>Date & Time</th>
+    <td><%=party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
+  </tr>
+  <tr>
+    <th>Hosted By:</th>
+    <td><%=party.host.full_name%></td>
+  </tr>
+
+  <tr>
+    <th> Description: </th>
+    <td><%=party.description%></td>
+  </tr>
+</table>

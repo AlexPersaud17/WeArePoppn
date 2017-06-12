@@ -1,1 +1,8 @@
-<li><%=guest.full_name%>  <%= link_to 'Uninvite', party_guest_path(party, guest), method: :delete if host?(party) && guest != party.host%></li>
+<tr>
+  <td><%=guest.full_name%></td>
+  <%if guest != @party.host%>
+    <td><%= link_to 'Uninvite', party_guest_path(party, guest), method: :delete, class: "uninvite-button" if host?(party) && guest != party.host%></td>
+    <%else%>
+    <td>Your Host!</td>
+    <%end%>
+</tr>

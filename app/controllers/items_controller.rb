@@ -39,7 +39,9 @@ class ItemsController < ApplicationController
     @item = @party.items.find_by(id: params[:id])
     @party_item = PartyItem.find_by(party: @party, item: @item)
     @party_item.destroy
-    redirect_to @party
+    if !request.xhr?
+      redirect_to @party
+    end
   end
 
   private

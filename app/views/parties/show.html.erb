@@ -8,30 +8,13 @@
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
           <% if host?(@party) %>
-          <%= link_to 'Edit Your Info', edit_party_path(@party) %> |
+          <%= link_to 'Edit Your Info', edit_party_path(@party), id: "edit-details"%> |
           <%= link_to 'Cancel Your Party', @party, method: :delete%>
           <% end %>
         </div>
         <div class="panel-body">
-          <table class="table">
-            <tr>
-              <th>Location</th>
-              <td><%=@party.location%></td>
-            </tr>
-            <tr>
-              <th>Date & Time</th>
-              <td><%=@party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
-            </tr>
-            <tr>
-              <th>Hosted By:</th>
-              <td><%=@party.host.full_name%></td>
-            </tr>
-
-            <tr>
-              <th> Description: </th>
-              <td><%=@party.description%></td>
-            </tr>
-          </table>
+          <%= render :partial => "edit", locals: {party: @party} %>
+          <%= render :partial => "details", locals: {party: @party} %>
         </div>
       </div>
 
@@ -49,11 +32,11 @@
             <% end %>
           </div>
           <div class="panel-body">
-            <ul>
+            <table class="table guest-list-table">
               <% @party.attendees.reverse.each do |guest| %>
                     <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
               <%end%>
-            </ul>
+            </table>
 
           </div>
         </div>
@@ -92,8 +75,10 @@
                 <%=f.submit "Add To List", data: { disable_with: false }%>
               <% end %>
             </div>
+
             <div id="drinks-table" class="panel-body">
-              <table class="table">
+              <table class="table item-list-table">
+
                 <% @party.drinks.reverse.each do |drink| %>
                 <tr>
                   <%= render template: 'items/_item_added', locals: {item: drink, party: @party} %>
@@ -121,7 +106,7 @@
               <% end %>
             </div>
             <div class="panel-body">
-              <table class="table">
+              <table class="table item-list-table">
                 <% @party.dishes.reverse.each do |dish|%>
                   <%= render template: 'items/_item_added', locals: {item: dish, party: @party} %>
                 <%end%>
@@ -146,7 +131,7 @@
               <% end %>
             </div>
             <div class="panel-body">
-              <table class="table">
+              <table class="table item-list-table">
                 <% @party.supplies.reverse.each do |supply| %>
                   <%= render template: 'items/_item_added', locals: {item: supply, party: @party} %>
                 <% end %>
@@ -221,6 +206,5 @@
 
   </div>
 
-</div>
 </div>
 </div>
