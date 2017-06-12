@@ -60,22 +60,19 @@
 
         <div class="col-md-12">
           <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading drinks-panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to 'Add More Drinks', new_party_item_path(@party) if host?(@party)%>
+              <%= link_to 'Add More Drinks', (new_party_item_path(@party) if host?(@party)), class: "add-drinks-button"%>
+              <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Drink" %>
+                <%=f.submit "Add To List", class: "add-drinks-submit", data: { disable_with: false }%>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.drinks.each do |drink| %>
-                <tr>
-                  <td><%=drink.name.capitalize %></td>
-                  <%if drink.party_items.find_by(party: @party).list_items.none? %>
-                  <td><%= button_to("Add To List", party_item_list_items_path(@party, drink))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, drink), method: :delete if host?(@party)%></td>
-                  <% else %>
-                  <td>Will be brought by: <%=drink.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
-                  <%end%>
-                </tr>
+                <% @party.drinks.reverse.each do |drink| %>
+                  <%= render template: 'items/_item_added', locals: {item: drink, party: @party} %>
                 <%end%>
               </table>
             </div>
@@ -88,22 +85,19 @@
 
         <div class="col-md-12">
           <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading dish-panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to 'Add More Dishes', new_party_item_path(@party) if host?(@party) %>
+              <%= link_to 'Add More Dishes', (new_party_item_path(@party) if host?(@party)), class: "add-dish-button" %>
+              <%= form_for [@party, Item.new], html:{class: "add-dish-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Food" %>
+                <%=f.submit "Add To List", class: "add-dish-submit", data: { disable_with: false } %>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.dishes.each do |dish|%>
-                <tr>
-                  <td><%=dish.name.capitalize%></td>
-                  <%if dish.party_items.find_by(party: @party).list_items.none? %>
-                  <td><%= button_to("Add To List", party_item_list_items_path(@party, dish))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, dish), method: :delete if host?(@party)%></td>
-                  <% else %>
-                  <td>Will be brought by: <%=dish.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
-                  <%end%>
-                </tr>
+                <% @party.dishes.reverse.each do |dish|%>
+                  <%= render template: 'items/_item_added', locals: {item: dish, party: @party} %>
                 <%end%>
               </table>
             </div>
@@ -116,22 +110,19 @@
 
         <div class="col-md-12">
           <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading supply-panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to 'Add More Supplies', new_party_item_path(@party) if host?(@party)%>
+              <%= link_to 'Add More Supplies', (new_party_item_path(@party) if host?(@party)), class: "add-supply-button"%>
+              <%= form_for [@party, Item.new], html:{class: "add-supply-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Supplies" %>
+                <%=f.submit "Add To List", class: "add-supply-submit", data: { disable_with: false } %>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.supplies.each do |supply| %>
-                <tr>
-                  <td><%=supply.name.capitalize%></td>
-                  <%if supply.party_items.find_by(party: @party).list_items.none? %>
-                  <td><%= button_to("Add To List", party_item_list_items_path(@party, supply))%></td>
-                  <td><%= link_to 'X', party_item_path(@party, supply), method: :delete if host?(@party)%></td>
-                  <% else %>
-                  <td>Will be brought by: <%=supply.party_items.find_by(party: @party).list_items.first.guest.user.full_name%></td>
-                  <%end%>
-                </tr>
+                <% @party.supplies.reverse.each do |supply| %>
+                  <%= render template: 'items/_item_added', locals: {item: supply, party: @party} %>
                 <% end %>
               </table>
             </div>

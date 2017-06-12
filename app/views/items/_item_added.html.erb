@@ -1,0 +1,9 @@
+<tr>
+  <td><%=item.name.capitalize %></td>
+  <%if item.party_items.find_by(party: party).list_items.none? %>
+  <td><%= button_to("Add To List", party_item_list_items_path(party, item))%></td>
+  <td><%= link_to 'X', party_item_path(party, item), method: :delete if host?(party)%></td>
+  <% else %>
+  <td>Will be brought by: <%=item.party_items.find_by(party: party).list_items.first.guest.user.full_name%></td>
+  <%end%>
+</tr>

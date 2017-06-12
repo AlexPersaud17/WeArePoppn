@@ -27,7 +27,11 @@ class ItemsController < ApplicationController
     params[:item][:name].split(", ").each do |item|
       @item = @party.items.find_or_create_by(category: params[:item][:category], name: item.capitalize)
     end
-    redirect_to new_party_item_path(@party)
+    if request.xhr?
+      render partial: "item_added", locals: {item: @item, party: @party}
+    else
+      redirect_to new_party_item_path(@party)
+    end
   end
 
   def destroy
