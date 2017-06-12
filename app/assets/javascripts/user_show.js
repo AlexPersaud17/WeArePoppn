@@ -17,7 +17,6 @@ $(document).ready(function(){
     e.preventDefault()
     var $row = $(this).parent().parent().parent()
     var url = $(this).parent().attr("action")
-    debugger
     $.ajax({
       method: "DELETE",
       url: url,
