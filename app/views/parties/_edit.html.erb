@@ -1,24 +1,23 @@
 
   <%= form_tag("/parties/#{party.id}", method: "put", class: "form-horizontal edit-party-form") do |f| %>
-    
 
     <div class="form-group">
-      <%=label_tag :description,nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
+      <%=label_tag :description,nil, class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
         <%=text_area_tag "party[description]", party.description, class: "form-control"%>
       </div>
     </div>
 
     <div class="form-group">
-      <%=label_tag :location, nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
+      <%=label_tag :location, nil, class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
         <%=text_field_tag "party[location]", party.location, class: "form-control"%>
       </div>
     </div>
 
     <div class="form-group">
-      <%=label_tag "Date & Time", nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
+      <%=label_tag "Date & Time", nil, class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
         <%=datetime_local_field_tag "party[date]", party.date.strftime("%FT%R"), class: "form-control"%>
       </div>
     </div>
