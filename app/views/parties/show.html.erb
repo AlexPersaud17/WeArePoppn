@@ -76,7 +76,7 @@
           <div class="panel panel-info">
             <div class="panel-heading drinks-panel-heading">
               <h3 class="panel-title">Drinks</h3>
-              <%= link_to 'Add More Drinks', (new_party_item_path(@party) if host?(@party)), class: "add-drinks-button"%>
+              <%= link_to 'Add More Drinks', (new_party_item_path(@party) ), class: "add-drinks-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Drink" %>
@@ -101,7 +101,7 @@
           <div class="panel panel-info">
             <div class="panel-heading dish-panel-heading">
               <h3 class="panel-title">Dishes</h3>
-              <%= link_to 'Add More Dishes', (new_party_item_path(@party) if host?(@party)), class: "add-dish-button" %>
+              <%= link_to 'Add More Dishes', (new_party_item_path(@party) ), class: "add-dish-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-dish-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Food" %>
@@ -126,7 +126,7 @@
           <div class="panel panel-info">
             <div class="panel-heading supply-panel-heading">
               <h3 class="panel-title">Supplies</h3>
-              <%= link_to 'Add More Supplies', (new_party_item_path(@party) if host?(@party)), class: "add-supply-button"%>
+              <%= link_to 'Add More Supplies', (new_party_item_path(@party) ), class: "add-supply-button" if host?(@party)%>
               <%= form_for [@party, Item.new], html:{class: "add-supply-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Supplies" %>
@@ -147,6 +147,24 @@
     </div>
 
   <div class="col-md-8">
+    <div class="panel panel-info">
+      <div class="panel-heading guest-panel-heading">
+        <h3 class="panel-title">Guests</h3>
+        <%= link_to 'Invite More Guests', (new_party_guest_path(@party)), class: "add-guest-button" if host?(@party)%>
+        <div class="append-email-error"></div>
+        <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "add-guest-form") do %>
+          <%= label_tag(:email) %>
+          <%= text_field_tag(:email) %>
+          <%= submit_tag("Add Guest", data: { disable_with: false }) %>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @party.attendees.reverse.each do |guest| %>
+            <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
+          <%end%>
+        </ul>
+
 
 
 <% if @suggested_cocktails%>
@@ -185,29 +203,22 @@
           <h3 class="panel-title">Comments</h3>
         </div>
         <div class="panel-body">
-          <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments" do |f| %>
+          <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments", html: {id: "add-comment"} do |f| %>
             <%= f.text_area :body, placeholder: 'Write a comment', rows: "4", style: 'width:100%;'%>
-            <%= f.submit "Comment" %>
+            <%= f.submit "Comment", data: { disable_with: false } %>
           <%end%>
 
-
-
         </div>
       </div>
+
       <% if @party.comments %>
+      <div id="comment-container">
       <% @party.comments.reverse.each do |comment| %>
 
-      <div class="panel panel-info">
-        <div class="panel-body">
-
-              <p> <%= comment.body %></p>
-              <ul><li><%= comment.guest.user.full_name%>
-                posted at: <%= comment.format_time%> on <%= comment.format_date%></li></ul>
-
-        </div>
-      </div>
+      <%= render :partial => "./comments/comment", locals: {comment: comment} %>
 
       <%end %>
+      </div>
       <%end%>
 
     </div>

@@ -7,7 +7,11 @@ class CommentsController < ApplicationController
     @party = Party.find(params[:party_id])
     @guest = Guest.find_by(user: current_user, party: @party)
     @comment = @guest.comments.create(comment_params)
-    redirect_to @party
+    if request.xhr?
+      render :partial => "comment", locals: {comment: @comment}
+    else
+      redirect_to @party
+    end
   end
 
   private
