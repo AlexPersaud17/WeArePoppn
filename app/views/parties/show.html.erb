@@ -34,15 +34,24 @@
           </table>
         </div>
       </div>
+
+
+
       <div class="panel panel-info">
-          <div class="panel-heading">
+          <div class="panel-heading guest-panel-heading">
             <h3 class="panel-title">Guests</h3>
-            <%= link_to 'Invite More Guests', new_party_guest_path(@party) if host?(@party)%>
+            <%= link_to 'Invite More Guests', (new_party_guest_path(@party)), class: "add-guest-button" if host?(@party)%>
+            <div class="append-email-error"></div>
+            <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "add-guest-form") do %>
+              <%= label_tag(:email) %>
+              <%= text_field_tag(:email) %>
+              <%= submit_tag("Add Guest", data: { disable_with: false }) %>
+            <% end %>
           </div>
           <div class="panel-body">
             <ul>
-              <% @party.attendees.each do |guest| %>
-                  <li><%=guest.full_name%>     <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete if host?(@party) && guest != @party.host%></li>
+              <% @party.attendees.reverse.each do |guest| %>
+                    <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
               <%end%>
             </ul>
 
@@ -95,6 +104,7 @@
 
       </div>
 
+
       <div class="row">
 
         <div class="col-md-12">
@@ -146,26 +156,10 @@
       </div>
     </div>
 
-  <div class="col-md-8">
-    <div class="panel panel-info">
-      <div class="panel-heading guest-panel-heading">
-        <h3 class="panel-title">Guests</h3>
-        <%= link_to 'Invite More Guests', (new_party_guest_path(@party)), class: "add-guest-button" if host?(@party)%>
-        <div class="append-email-error"></div>
-        <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "add-guest-form") do %>
-          <%= label_tag(:email) %>
-          <%= text_field_tag(:email) %>
-          <%= submit_tag("Add Guest", data: { disable_with: false }) %>
-        <% end %>
-      </div>
-      <div class="panel-body">
-        <ul>
-          <% @party.attendees.reverse.each do |guest| %>
-            <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
-          <%end%>
-        </ul>
 
 
+
+<div class="col-md-8">
 
 <% if @suggested_cocktails%>
     <div class="panel panel-info">
@@ -225,5 +219,6 @@
 
   </div>
 
+</div>
 </div>
 </div>
