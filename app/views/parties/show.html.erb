@@ -49,11 +49,11 @@
             <% end %>
           </div>
           <div class="panel-body">
-            <ul>
+            <table class="table guest-list-table">
               <% @party.attendees.reverse.each do |guest| %>
                     <%= render template: 'guests/_guest_added', locals: {guest: guest, party: @party} %>
               <%end%>
-            </ul>
+            </table>
 
           </div>
         </div>
@@ -219,6 +219,5 @@
 
   </div>
 
-</div>
 </div>
 </div>
