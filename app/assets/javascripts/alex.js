@@ -65,6 +65,34 @@ $(document).ready(function(event){
     })
   })
 
+  $(".add-guest-button").on("click", function(e){
+    e.preventDefault();
+    $(".add-guest-form").show();
+    $(".add-guest-form").trigger("reset");
+    $(".add-guest-button").hide();
+  })
 
+  $(".guest-panel-heading").on("submit", ".add-guest-form", function(e){
+    e.preventDefault();
+    var data = $(e.target).serialize()
+    var url = $(e.target).attr("action")
+    $.ajax({
+      method: "post",
+      data: data,
+      url: url
+    }).done(function(res){
+      if(!res.includes("email-fail-error")){
+        $(e.target).parent().siblings(".panel-body").children("ul").prepend(res)
+        $(".add-guest-form").hide();
+        $(".add-guest-button").show();
+        $(".append-email-error").children().remove();
+        $(".append-email-error").hide();
+      }else{
+        $(".append-email-error").show();
+        $(".append-email-error").children().remove();
+        $(".append-email-error").append(res)
+      }
+    })
+  })
 
 });
