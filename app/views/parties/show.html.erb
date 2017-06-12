@@ -62,7 +62,7 @@
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.drinks.each do |drink| %>
+                <% @party.drinks.reverse.each do |drink| %>
                   <%= render template: 'items/_drink_added', locals: {drink: drink, party: @party} %>
                 <%end%>
               </table>
@@ -79,10 +79,15 @@
             <div class="panel-heading dish-panel-heading">
               <h3 class="panel-title">Dishes</h3>
               <%= link_to 'Add More Dishes', (new_party_item_path(@party) if host?(@party)), class: "add-dish-button" %>
+              <%= form_for [@party, Item.new], html:{class: "add-dish-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Food" %>
+                <%=f.submit "Add To List", class: "add-dish-submit", data: { disable_with: false } %>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.dishes.each do |dish|%>
+                <% @party.dishes.reverse.each do |dish|%>
                 <tr>
                   <td><%=dish.name.capitalize%></td>
                   <%if dish.party_items.find_by(party: @party).list_items.none? %>
@@ -107,10 +112,15 @@
             <div class="panel-heading">
               <h3 class="panel-title">Supplies</h3>
               <%= link_to 'Add More Supplies', new_party_item_path(@party) if host?(@party)%>
+              <%= form_for [@party, Item.new], html:{class: "add-supply-form" } do |f| %>
+                <%=f.text_field :name%>
+                <%=f.hidden_field :category, value: "Supply" %>
+                <%=f.submit "Add To List", class: "add-supply-submit", data: { disable_with: false } %>
+              <% end %>
             </div>
             <div class="panel-body">
               <table class="table">
-                <% @party.supplies.each do |supply| %>
+                <% @party.supplies.reverse.each do |supply| %>
                 <tr>
                   <td><%=supply.name.capitalize%></td>
                   <%if supply.party_items.find_by(party: @party).list_items.none? %>

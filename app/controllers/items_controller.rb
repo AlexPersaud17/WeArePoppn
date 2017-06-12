@@ -2,11 +2,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @party = Party.find_by(id: params[:party_id])
-    if request.xhr?
-      render partial: "new_drink", locals: {party: @party, item: @item}
-    else
-      render "new"
-    end
   end
 
   def show
@@ -33,7 +28,7 @@ class ItemsController < ApplicationController
       @item = @party.items.find_or_create_by(category: params[:item][:category], name: item.capitalize)
     end
     if request.xhr?
-      render partial: "drink_added", locals: {drink: @item, party: @party}
+      render partial: "item_added", locals: {drink: @item, party: @party}
     else
       redirect_to new_party_item_path(@party)
     end
