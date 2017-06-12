@@ -17,7 +17,13 @@ class ListItemsController < ApplicationController
     @guest = Guest.find_by(user: current_user, party: @party)
     list_item = ListItem.find_by(guest: @guest, party_item: @party_item)
     list_item.destroy
-    redirect_to current_user
+    if request.xhr?
+      if @guest.list_items.empty?
+        render :partial => "./guests/empty_list"
+      end
+    else
+      redirect_to current_user
+    end
   end
 
 end
