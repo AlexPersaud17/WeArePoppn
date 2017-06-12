@@ -81,15 +81,13 @@
                   <% else %>
                     <td><%=list_item.party_item.item.name.capitalize%></td>
                   <%end%>
-                  <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete)%></td>
+                  <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete, class: "remove")%></td>
                 </tr>
                 <%end%>
-                <%else%>
-                <div class="panel-body">
-                  <h3> Nothing yet, don't be a party <%= image_tag("pooper.png", height: '32', width: '32') %>er!</h3>
-                </div>
-                <%end%>
               </table>
+              <%else%>
+              <%= render :partial => './guests/empty_list' %>
+              <%end%>
             </div>
           </div>
         </div>
