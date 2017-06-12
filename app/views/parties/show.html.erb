@@ -8,30 +8,13 @@
         <div class="panel-heading">
           <h3 class="panel-title">Details</h3>
           <% if host?(@party) %>
-          <%= link_to 'Edit Your Info', edit_party_path(@party) %> |
+          <%= link_to 'Edit Your Info', edit_party_path(@party), id: "edit-details"%> |
           <%= link_to 'Cancel Your Party', @party, method: :delete%>
           <% end %>
         </div>
         <div class="panel-body">
-          <table class="table">
-            <tr>
-              <th>Location</th>
-              <td><%=@party.location%></td>
-            </tr>
-            <tr>
-              <th>Date & Time</th>
-              <td><%=@party.date.strftime("%m/%d/%Y at %l:%M %p")%></td>
-            </tr>
-            <tr>
-              <th>Hosted By:</th>
-              <td><%=@party.host.full_name%></td>
-            </tr>
-
-            <tr>
-              <th> Description: </th>
-              <td><%=@party.description%></td>
-            </tr>
-          </table>
+          <%= render :partial => "edit", locals: {party: @party} %>
+          <%= render :partial => "details", locals: {party: @party} %>
         </div>
       </div>
 

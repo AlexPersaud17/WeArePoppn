@@ -41,10 +41,18 @@ class PartiesController < ApplicationController
     @party = Party.find_by(id: params[:id])
     @party.assign_attributes(party_params)
     if @party.save
-      redirect_to "/parties/#{@party.id}"
+      if request.xhr?
+        render :partial => "details", locals: {party: @party}
+      else
+        redirect_to "/parties/#{@party.id}"
+      end
     else
       @errors = @party.errors.full_messages
-      render :edit
+      if request.xhr?
+      render :partial => "./errors"
+      else
+       render :edit
+      end
     end
   end
 
