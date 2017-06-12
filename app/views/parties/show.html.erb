@@ -1,8 +1,8 @@
 <div class="background4 lighten">
 <div class="forms-container container">
   <h2><%=@party.name%></h2>
-  <div class="row">
 
+  <div class="row">
     <div class="col-md-6">
       <div class="panel panel-info">
         <div class="panel-heading">
@@ -34,23 +34,37 @@
           </table>
         </div>
       </div>
+      <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Guests</h3>
+            <%= link_to 'Invite More Guests', new_party_guest_path(@party) if host?(@party)%>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @party.attendees.each do |guest| %>
+                  <li><%=guest.full_name%>     <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete if host?(@party) && guest != @party.host%></li>
+              <%end%>
+            </ul>
+
+          </div>
+        </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Map</h3>
+          <a data-toggle="collapse" href="#collapse">(hide/show map)</a>
         </div>
         <div class="panel-body">
 
-
-          <iframe
+          <iframe id='collapse' class="panel-collapse collapse.show"
             width= 100% height="450" frameborder="0" style="border:0" src='<%= "https://www.google.com/maps/embed/v1/place?key=#{ENV['MAP_KEY']}&q=#{@location}"%>'>
           </iframe>
+
 
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="row">
@@ -133,20 +147,7 @@
     </div>
 
   <div class="col-md-8">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Guests</h3>
-        <%= link_to 'Invite More Guests', new_party_guest_path(@party) if host?(@party)%>
-      </div>
-      <div class="panel-body">
-        <ul>
-          <% @party.attendees.each do |guest| %>
-              <li><%=guest.full_name%>     <%= link_to 'Uninvite', party_guest_path(@party, guest), method: :delete if host?(@party) && guest != @party.host%></li>
-          <%end%>
-        </ul>
 
-      </div>
-    </div>
 
 <% if @suggested_cocktails%>
     <div class="panel panel-info">
