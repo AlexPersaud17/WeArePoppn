@@ -72,13 +72,17 @@
               <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Drink" %>
-                <%=f.submit "Add To List", class: "add-drinks-submit", data: { disable_with: false }%>
+                <%=f.submit "Add To List", data: { disable_with: false }%>
               <% end %>
             </div>
-            <div class="panel-body">
+
+            <div id="drinks-table" class="panel-body">
               <table class="table item-list-table">
+
                 <% @party.drinks.reverse.each do |drink| %>
+                <tr>
                   <%= render template: 'items/_item_added', locals: {item: drink, party: @party} %>
+                </tr>
                 <%end%>
               </table>
             </div>
