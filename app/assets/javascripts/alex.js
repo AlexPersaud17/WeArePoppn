@@ -108,4 +108,20 @@ $(document).ready(function(event){
     })
   })
 
+  $(".item-list-table").on("click", ".remove-item", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var url = $(e.target).attr("href")
+    var $row = $(e.target).parent().parent()
+    $.ajax({
+      method: "delete",
+      url: url
+    }).done(function(res){
+      $row.remove();
+    })
+  })
+
+
+
+
 });
