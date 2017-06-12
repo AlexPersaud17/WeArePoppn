@@ -27,20 +27,5 @@ $(document).ready(function(){
     })
   })
 
-  $("#add-comment").on("submit", function(e){
-    e.preventDefault()
-    var $form = $(this)
-    var data = $form.serialize()
-    var method = $form.attr("method")
-    var url = $form.attr("action")
-    $.ajax({
-      method: method,
-      url: url,
-      data: data,
-    })
-    .done(function(response){
-      $("#comment-container").prepend(response)
-      $form.trigger('reset')
-    })
-  })
+
 })

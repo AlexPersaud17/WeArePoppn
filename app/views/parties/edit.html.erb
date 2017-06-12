@@ -3,43 +3,7 @@
   <h2 class=""> Let's Get This Party Started! </h2>
 
   <%= render :partial => "./errors"%>
-
-  <%= form_tag("/parties/#{@party.id}", method: "put", class: "form-horizontal") do |f| %>
-    <div class="form-group">
-      <%=label_tag :name, nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-        <%=text_field_tag "party[name]", @party.name, class: "form-control"%>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%=label_tag :description,nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-        <%=text_area_tag "party[description]", @party.description, class: "form-control"%>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%=label_tag :location, nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-        <%=text_field_tag "party[location]", @party.location, class: "form-control"%>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%=label_tag "Date & Time", nil, class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-        <%=datetime_local_field_tag "party[date]", @party.date.strftime("%FT%R"), class: "form-control"%>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <%=submit_tag "It's Popp'n", class: "btn btn-default" %>
-      </div>
-    </div>
-
-  <% end %>
+  <%= render :partial => "edit", locals: {party: @party} %>
 </div>
 
 </div>
