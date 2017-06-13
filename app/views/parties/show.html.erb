@@ -104,7 +104,7 @@
                 <%=f.submit "Add To List", class: "add-dish-submit", data: { disable_with: false } %>
               <% end %>
             </div>
-            <div class="panel-body">
+            <div id="dish-table" class="panel-body">
               <table class="table item-list-table">
                 <% @party.dishes.reverse.each do |dish|%>
                 <tr>
@@ -131,7 +131,7 @@
                 <%=f.submit "Add To List", class: "add-supply-submit", data: { disable_with: false } %>
               <% end %>
             </div>
-            <div class="panel-body">
+            <div id="supply-table" class="panel-body">
               <table class="table item-list-table">
                 <% @party.supplies.reverse.each do |supply| %>
                 <tr>

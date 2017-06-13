@@ -15,7 +15,8 @@ $(document).ready(function(event){
       data: data,
       url: url
     }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
+      $(e.target).parent().siblings(".panel-body").children("table").children().prepend(res)
+      $(".drink-table-body").prepend(res)
       $(".add-drinks-form").hide();
       $(".add-drinks-button").show();
     })
