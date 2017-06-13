@@ -1,9 +1,9 @@
 <td><%= item.name.capitalize %> </td>
-<%if item.party_items.find_by(party: party).list_items.none? %>
+<% unless PartyItem.find_by(party: party, item: item).list_item %>
   <div class="append-here">
     <td><%= button_to("Add To List", party_item_list_items_path(party, item), class:"item-button" )%></td>
     <td><%= link_to 'X', party_item_path(party, item), method: :delete, class: "remove-item" if host?(party)%></td>
   </div>
 <% else %>
-  <td>Will be brought by: <%=item.party_items.find_by(party: party).list_items.first.guest.user.full_name%></td>
+  <td>Will be brought by: <%=PartyItem.find_by(party: party, item: item).list_item.guest.user.full_name%></td>
 <%end%>

@@ -7,6 +7,7 @@ class ListItemsController < ApplicationController
     @guest = Guest.find_by(user: current_user, party: @party)
     list_item = ListItem.find_or_create_by(guest: @guest, party_item: @party_item)
     if request.xhr?
+      # binding.pry
       render partial: "list_item_added", locals:{item: @item, party: @party}
     else
       redirect_to @party
