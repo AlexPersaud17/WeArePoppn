@@ -49,7 +49,7 @@
         </div>
         <div class="panel-body">
 
-          <iframe id='collapse' class="panel-collapse collapse.show"
+          <iframe id='collapse' class="panel-collapse collapse in"
             width= 100% height="450" frameborder="0" style="border:0" src='<%= "https://www.google.com/maps/embed/v1/place?key=#{ENV['MAP_KEY']}&q=#{@location}"%>'>
           </iframe>
 
@@ -69,7 +69,7 @@
             <div class="panel-heading drinks-panel-heading">
               <h3 class="panel-title">Drinks</h3>
               <%= link_to 'Add More Drinks', (new_party_item_path(@party) ), class: "add-drinks-button" if host?(@party)%>
-              <%= form_for [@party, Item.new], html:{class: "add-drinks-form" } do |f| %>
+              <%= form_for [@party, Item.new], html:{class: "add-drinks-form animated" } do |f| %>
                 <%=f.text_field :name%>
                 <%=f.hidden_field :category, value: "Drink" %>
                 <%=f.submit "Add To List", data: { disable_with: false }%>
@@ -104,7 +104,7 @@
                 <%=f.submit "Add To List", class: "add-dish-submit", data: { disable_with: false } %>
               <% end %>
             </div>
-            <div class="panel-body">
+            <div id="dish-table" class="panel-body">
               <table class="table item-list-table">
                 <% @party.dishes.reverse.each do |dish|%>
                 <tr>
@@ -131,7 +131,7 @@
                 <%=f.submit "Add To List", class: "add-supply-submit", data: { disable_with: false } %>
               <% end %>
             </div>
-            <div class="panel-body">
+            <div id="supply-table" class="panel-body">
               <table class="table item-list-table">
                 <% @party.supplies.reverse.each do |supply| %>
                 <tr>
@@ -152,32 +152,13 @@
 <div class="col-md-8">
 
 <% if @suggested_cocktails%>
-    <div class="panel panel-info">
+    <div class="panel panel-info cocktail-panel">
       <div class="panel-heading">
         <h3 class="panel-title">Suggested Cocktails</h3>
+        <%=link_to "Shake For More Cocktail Ideas!", @party, class: "cocktail-refresh"%>
       </div>
       <div class="panel-body">
-        <% @suggested_cocktails.each do |cocktail|%>
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <h4 class="panel-title"><%=cocktail["name"]%></h4>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p><%=cocktail["descriptionPlain"]%></p>
-                  </div>
-                  <div class="col-xs-6">
-                    <ul>
-                      <%cocktail["ingredients"].each do |ingredient|%>
-                        <li><%=ingredient["text"]%></li>
-                      <%end%>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <%end%>
+        <%= render template: 'parties/_cocktail_recipes', locals: {suggested_cocktails: @suggested_cocktails }%>
       </div>
     </div>
     <%end%>
@@ -188,7 +169,7 @@
         </div>
         <div class="panel-body">
           <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments", html: {id: "add-comment"} do |f| %>
-            <%= f.text_area :body, placeholder: 'Write a comment', rows: "4", style: 'width:100%;'%>
+            <%= f.text_area :body, placeholder: 'Make a comment!', rows: "4", style: 'width:100%;'%>
             <%= f.submit "Comment", data: { disable_with: false } %>
           <%end%>
 
