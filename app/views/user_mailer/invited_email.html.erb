@@ -5,11 +5,11 @@
   </head>
   <body>
 
-    <%= image_tag 'logo.png' %>
+    <%= image_tag '/portfolio/fullsize/logo.png' %>
     <h1>Welcome to Popp'n, <%= @user.email %></h1>
     <p>
       You have been invited to party! We have provided you  <br>
-      with a temporary password <%= @user.password %>
+      with a temporary password <%= @password%>
     </p>
     <p>
       To login to the site, just follow this link: <%= @url %>.

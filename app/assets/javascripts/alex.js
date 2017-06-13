@@ -96,17 +96,9 @@ $(document).ready(function(event){
       data: data,
       url: url
     }).done(function(res){
-      if(!res.includes("email-fail-error")){
-        $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-        $(".add-guest-form").hide();
-        $(".add-guest-button").show();
-        $(".append-email-error").children().remove();
-        $(".append-email-error").hide();
-      }else{
-        $(".append-email-error").show();
-        $(".append-email-error").children().remove();
-        $(".append-email-error").append(res)
-      }
+      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
+      $(".add-guest-form").hide();
+      $(".add-guest-button").show();
     })
   })
 
