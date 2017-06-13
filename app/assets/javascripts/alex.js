@@ -1,9 +1,15 @@
 $(document).ready(function(event){
+
+  var animOver = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
   $(".add-drinks-button").on("click", function(e){
     e.preventDefault();
+    $(".add-drinks-form").addClass("animated slideInRight").one(animOver, function(){
+      $(".add-drinks-form").removeClass("animated slideInRight")
+    })
+    $(".add-drinks-button").hide();
     $(".add-drinks-form").show();
     $(".add-drinks-form").trigger("reset");
-    $(".add-drinks-button").hide();
   })
 
   $(".drinks-panel-heading").on("submit", ".add-drinks-form", function(e){
@@ -16,13 +22,16 @@ $(document).ready(function(event){
       url: url
     }).done(function(res){
       $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-      $(".add-drinks-form").hide();
       $(".add-drinks-button").show();
+      $(".add-drinks-form").hide();
     })
   })
 
   $(".add-dish-button").on("click", function(e){
     e.preventDefault();
+    $(".add-dish-form").addClass("animated slideInRight").one(animOver, function(){
+      $(".add-dish-form").removeClass("animated slideInRight")
+    })
     $(".add-dish-form").show();
     $(".add-dish-form").trigger("reset");
     $(".add-dish-button").hide();
@@ -45,6 +54,9 @@ $(document).ready(function(event){
 
   $(".add-supply-button").on("click", function(e){
     e.preventDefault();
+    $(".add-supply-form").addClass("animated slideInRight").one(animOver, function(){
+      $(".add-supply-form").removeClass("animated slideInRight")
+    })
     $(".add-supply-form").show();
     $(".add-supply-form").trigger("reset");
     $(".add-supply-button").hide();
@@ -67,6 +79,9 @@ $(document).ready(function(event){
 
   $(".add-guest-button").on("click", function(e){
     e.preventDefault();
+    $(".add-guest-form").addClass("animated slideInRight").one(animOver, function(){
+      $(".add-guest-form").removeClass("animated slideInRight")
+    })
     $(".add-guest-form").show();
     $(".add-guest-form").trigger("reset");
     $(".add-guest-button").hide();
@@ -125,6 +140,9 @@ $(document).ready(function(event){
     e.preventDefault();
     var url = $(e.target).attr("href")
     var $body = $(e.target).parent().siblings()
+    $(".cocktail-panel").addClass("animated wobble").one(animOver, function(){
+      $(".cocktail-panel").removeClass("animated wobble")
+    })
     $.ajax({
       method: "get",
       url: url
