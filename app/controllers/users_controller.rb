@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user if logged_in?
+    if logged_in?
+      @user = current_user
+    else
+      render "./404"
+    end
   end
 
   def create

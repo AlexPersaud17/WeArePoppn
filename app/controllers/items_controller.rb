@@ -17,7 +17,8 @@ class ItemsController < ApplicationController
       recipe_res = Net::HTTP.get_response(recipe_uri)
       recipe_data = JSON.parse(recipe_res.body)
       @recipe = recipe_data["recipe"]
-
+    else
+      render "./404"
     end
 
   end
