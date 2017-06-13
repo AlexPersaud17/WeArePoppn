@@ -7,13 +7,13 @@ class PartiesController < ApplicationController
       if @party.drinks.length > 0
         @suggested_cocktails = @party.absolutAPI
       end
+      if request.xhr?
+        render partial: "cocktail_recipes", locals: {suggested_cocktails: @suggested_cocktails}
+      else
+        render "show"
+      end
     else
       render "./404"
-    end
-    if request.xhr?
-      render partial: "cocktail_recipes", locals: {suggested_cocktails: @suggested_cocktails}
-    else
-      render "show"
     end
   end
 
