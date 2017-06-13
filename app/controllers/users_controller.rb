@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user
-      UserMailer.welcome_email(@user).deliver_now
+      UserMailer.welcome_email(@user).deliver!
     else
       @errors = @user.errors.full_messages
       render :new
