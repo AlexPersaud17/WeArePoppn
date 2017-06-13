@@ -22,7 +22,7 @@ $(document).ready(function(){
       $button.parent().parent().parent().html(response)
     })
   })
-  
+
   $("#supply-table").on("click", ".item-button", function(e){
     e.preventDefault();
     $button=$(this)
