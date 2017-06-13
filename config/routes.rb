@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users, only: [:create, :new, :show]
+  resources :users, except: [:index, :destroy]
   resources :parties do
     resources :comments, only: [:new, :create]
     resources :items, only: [:create, :new, :destroy] do
