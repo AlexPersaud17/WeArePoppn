@@ -4,6 +4,7 @@
     <%= favicon_link_tag '/favicon.ico' %>
     <title>FinalProject</title>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -26,17 +27,17 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if logged_in? %>
                     <li>
-                      <a class="page-scroll" href="/users/show"><%=current_user.full_name%></a>
+                      <a href="/users/show"><%=current_user.full_name%></a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="/logout">Log out</a>
+                      <a href="/logout">Log out</a>
                     </li>
                   <%else%>
                     <li>
-                      <a class="page-scroll" href="/users/new">Register</a>
+                      <a href="/users/new">Register</a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="/sessions/new">Log in</a>
+                      <a href="/sessions/new">Log in</a>
                     </li>
                   <%end%>
                 </ul>

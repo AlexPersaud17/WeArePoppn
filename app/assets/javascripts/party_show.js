@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var animOver = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
   $("#add-comment").on("submit", function(e){
     e.preventDefault()
     var $form = $(this)
@@ -12,9 +14,13 @@ $(document).ready(function(){
     })
     .done(function(response){
       $("#comment-container").prepend(response)
+      $("#comment-container").find(".comment-panel").first().addClass("animated slideInDown").one(animOver, function(){
+        $("#comment-container").find(".comment-panel").first().removeClass("animated slideInDown")
+      })
       $form.trigger('reset')
     })
   })
+
 
   $("#edit-details").on("click", function(e){
     e.preventDefault()

@@ -74,14 +74,14 @@
             <div class="panel-body">
               <% if guest.list_items.length > 0 %>
                 <table class="table">
-                <% guest.list_items.each do |list_item| %>
+                <% guest.items.each do |item| %>
                   <tr>
-                    <% if list_item.party_item.item.category == "Food"%>
-                      <td><%=link_to list_item.party_item.item.name.capitalize, item_path(list_item.party_item.item) %></td>
+                    <% if item.category == "Food"%>
+                      <td><%=link_to item.name.capitalize, item_path(item) %></td>
                     <% else %>
-                      <td><%=list_item.party_item.item.name.capitalize%></td>
+                      <td><%=item.name.capitalize%></td>
                     <%end%>
-                    <td><%= button_to("Remove From List", party_item_list_item_path(list_item.party_item.party, list_item.party_item.item), method: :delete, class: "remove")%></td>
+                    <td><%= button_to("Remove From List", party_item_list_item_path(guest.party, item), method: :delete, class: "remove")%></td>
                   </tr>
                 <%end%>
               </table>
