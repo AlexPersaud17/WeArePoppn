@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :hosted_parties, class_name: "Party", foreign_key: :host_id
-  has_many :guests
+  has_many :guests, dependent: :destroy
 
   has_many :list_items, through: :guests
   has_many :party_items, through: :list_items
