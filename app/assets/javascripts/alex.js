@@ -15,7 +15,8 @@ $(document).ready(function(event){
       data: data,
       url: url
     }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
+      $(e.target).parent().siblings(".panel-body").children("table").children().prepend(res)
+      $(".drink-table-body").prepend(res)
       $(".add-drinks-form").hide();
       $(".add-drinks-button").show();
     })
@@ -120,6 +121,21 @@ $(document).ready(function(event){
       $row.remove();
     })
   })
+
+  $(".cocktail-refresh").on("click", function(e){
+    e.preventDefault();
+    var url = $(e.target).attr("href")
+    var $body = $(e.target).parent().siblings()
+    $.ajax({
+      method: "get",
+      url: url
+    }).done(function(res){
+      $body.html(res)
+    })
+
+  })
+
+
 
 
 
