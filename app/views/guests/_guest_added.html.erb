@@ -1,5 +1,9 @@
 <tr>
-  <td><%=guest.full_name%></td>
+  <% if guest.first_name == 'temp' do %>
+    <td><%=guest.email%> (...awaiting registration)</td>
+  <% else %>
+    <td><%=guest.full_name%></td>
+  <% end %>
   <%if guest != @party.host%>
     <td><%= link_to 'Uninvite', party_guest_path(party, guest), method: :delete, class: "uninvite-button" if host?(party) && guest != party.host%></td>
     <%else%>

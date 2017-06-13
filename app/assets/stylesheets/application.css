@@ -61,36 +61,36 @@
 }
 
 .background1{
-  background-image: url('balloons.jpeg');
+  background: url('balloons.jpeg') center center fixed;
 }
 .background2{
-  background-image: url('glitch.png');
+  background: url('water-balloons.jpeg') center center fixed;
 }
 .background3{
-  background-image: url('naranjas.png');
+  background: url('naranjas.png') center center fixed;
 }
 .background4{
-  background-image: url('plaid.jpg');
+  background: url('plaid.jpg') center center fixed;
 }
 .background5{
-  background-image: url('ripples.jpg');
+  background: url('ripples.jpg') center center fixed;
 }
 .background6{
-  background-image: url('wild-sea.png');
+  background: url('wild-sea.png') center center fixed;
 }
 .background7{
-  background-image: url('cuttingboard.jpeg');
+  background: url('cuttingboard.jpeg') center center fixed;
 }
 .background8{
-  background-image: url('summerdrinks.jpeg');
+  background: url('summerdrinks.jpeg') center center fixed;
 }
 
 
- .parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
  body {
@@ -563,6 +563,22 @@ footer{
 
 .pad-below{
   padding-bottom: 200px;
+}
+
+.btn-default:hover{
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+}
+@-webkit-keyframes sdb04 {
+	0% {
+		-webkit-transform: translate(0, 0);
+	}
+	20% {
+		-webkit-transform: translate(0, -10px);
+	}
+	40% {
+		-webkit-transform: translate(0, 0);
+	}
 }
 
 
