@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  
+
   helper_method :unauthorized
   helper_method :current_user
   helper_method :logged_in?
