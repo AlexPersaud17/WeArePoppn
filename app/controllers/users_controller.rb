@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = current_user
-      # binding.pry
     else
       render "./404"
     end
