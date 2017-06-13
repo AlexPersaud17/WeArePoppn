@@ -11,10 +11,17 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
+
   has_secure_password
+
+  before_save :to_downcase
 
   def full_name
     first_name + " " + last_name
+  end
+
+  def to_downcase
+    email.downcase!
   end
 
 end
