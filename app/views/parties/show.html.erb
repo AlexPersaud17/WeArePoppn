@@ -27,7 +27,7 @@
             <div class="append-email-error"></div>
             <%= form_tag("/parties/#{@party.id}/guests", method: "post", class: "add-guest-form") do %>
               <%= label_tag(:email) %>
-              <%= text_field_tag(:email) %>
+              <%= email_field_tag(:email) %>
               <%= submit_tag("Add Guest", data: { disable_with: false }) %>
             <% end %>
           </div>
