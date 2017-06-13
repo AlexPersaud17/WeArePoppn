@@ -5,5 +5,5 @@
     <td><%= link_to 'X', party_item_path(party, item), method: :delete, class: "remove-item" if host?(party)%></td>
   </div>
 <% else %>
-  <td>Will be brought by: <%=PartyItem.find_by(party: party, item: item).guest.user.full_name%></td>
+  <td>Will be brought by: <%=PartyItem.find_by(party: party, item: item).user.full_name%></td>
 <%end%>
