@@ -15,6 +15,10 @@ class GuestsController < ApplicationController
         redirect_to new_party_guest_path(@party)
       end
     else
+      @user = User.create(first_name:"temp", last_name: "temp", email: params[:email], password: '1234')
+      @guest = Guest.find_or_create_by(party: @party, user: @user)
+      UserMailer.invited_email(@user).deliver!
+
       if request.xhr?
         render partial: "guest_not_found"
       else

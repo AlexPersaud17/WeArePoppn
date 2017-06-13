@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <%= image_tag 'logo.png' %>
+    <h1>Welcome to Popp'n, <%= @user.email %></h1>
+    <p>
+      You have been invited to party! We have provided you  <br>
+      with a temporary password <%= @user.password %>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
