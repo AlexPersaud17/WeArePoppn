@@ -9,7 +9,7 @@
           <h3 class="panel-title">Details</h3>
           <% if host?(@party) %>
           <%= link_to 'Edit Your Info', edit_party_path(@party), id: "edit-details"%> |
-          <%= link_to 'Cancel Your Party', @party, method: :delete%>
+          <%= link_to 'Cancel Your Party', @party, method: :delete, data: {confirm: "Are you sure?"}%>
           <% end %>
         </div>
         <div class="panel-body">
