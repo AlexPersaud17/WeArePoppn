@@ -35,7 +35,6 @@ $(document).ready(function(){
     })
   })
 
-
   $(function() {
   	$('.page-scroll').on('click', function(e) {
   		e.preventDefault();
@@ -43,5 +42,5 @@ $(document).ready(function(){
   	});
   });
 
-  
-})
+
+});
