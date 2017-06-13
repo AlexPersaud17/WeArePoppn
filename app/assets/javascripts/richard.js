@@ -22,7 +22,7 @@ $(document).ready(function(){
       $button.parent().parent().parent().html(response)
     })
   })
-  
+
   $("#supply-table").on("click", ".item-button", function(e){
     e.preventDefault();
     $button=$(this)
@@ -42,4 +42,6 @@ $(document).ready(function(){
   	$('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
   	});
   });
+
+  
 })
