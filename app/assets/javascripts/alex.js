@@ -122,6 +122,21 @@ $(document).ready(function(event){
     })
   })
 
+  $(".cocktail-refresh").on("click", function(e){
+    e.preventDefault();
+    var url = $(e.target).attr("href")
+    var $body = $(e.target).parent().siblings()
+    $.ajax({
+      method: "get",
+      url: url
+    }).done(function(res){
+      $body.html(res)
+    })
+
+  })
+
+
+
 
 
 

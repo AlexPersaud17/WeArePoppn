@@ -155,6 +155,7 @@
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Suggested Cocktails</h3>
+        <%=link_to "Click For More Cocktail Ideas!", @party, class: "cocktail-refresh"%>
       </div>
       <div class="panel-body">
         <% @suggested_cocktails.each do |cocktail|%>

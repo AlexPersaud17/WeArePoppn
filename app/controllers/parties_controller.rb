@@ -10,6 +10,11 @@ class PartiesController < ApplicationController
       body = JSON.parse(response.body)
       @suggested_cocktails = body["result"].sample(3)
     end
+    if request.xhr?
+      render partial: "cocktail_recipes", locals: {suggested_cocktails: @suggested_cocktails}
+    else
+      render "show"
+    end
   end
 
   def new
