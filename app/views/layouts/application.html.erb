@@ -26,17 +26,17 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if logged_in? %>
                     <li>
-                      <a class="page-scroll" href="/users/show"><%=current_user.full_name%></a>
+                      <a href="/users/show"><%=current_user.full_name%></a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="/logout">Log out</a>
+                      <a href="/logout">Log out</a>
                     </li>
                   <%else%>
                     <li>
-                      <a class="page-scroll" href="/users/new">Register</a>
+                      <a href="/users/new">Register</a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="/sessions/new">Log in</a>
+                      <a href="/sessions/new">Log in</a>
                     </li>
                   <%end%>
                 </ul>
