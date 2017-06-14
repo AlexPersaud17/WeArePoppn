@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
-
   before_action :find_party
+  
   def new
     @guest = Guest.new
   end
