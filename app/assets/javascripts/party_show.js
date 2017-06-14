@@ -7,80 +7,16 @@ $(document).ready(function(){
   $(".add-supply-button").on("click", { formSelector: ".add-supply-form" }, slideForm);
   $(".add-guest-button").on("click", { formSelector: ".add-guest-form" }, slideForm)
 
-  function slideForm(e){
-    e.preventDefault();
-    $(e.data.formSelector).addClass("animated slideInRight").one(animOver, function(){
-      $(e.data.formSelector).removeClass("animated slideInRight")
-    })
-    $(e.data.formSelector).show();
-    $(e.data.formSelector).trigger("reset");
-    $(this).hide();
-  }
+
+  $(".drinks-panel-heading").on("submit", ".add-drinks-form", {buttonSelector: ".add-drinks-button"}, addRow)
+  $(".dish-panel-heading").on("submit", ".add-dish-form", {buttonSelector: ".add-dish-button"}, addRow)
+  $(".supply-panel-heading").on("submit", ".add-supply-form", {buttonSelector: ".add-supply-button"}, addRow)
+  $(".guest-panel-heading").on("submit", ".add-guest-form", {buttonSelector: ".add-guest-button"}, addRow)
 
 
-
-  $(".drinks-panel-heading").on("submit", ".add-drinks-form", function(e){
-    e.preventDefault();
-    var data = $(e.target).serialize()
-    var url = $(e.target).attr("action")
-    $.ajax({
-      method: "post",
-      data: data,
-      url: url
-    }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-      $(".add-drinks-button").show();
-      $(".add-drinks-form").hide();
-    })
-  })
-
-
-  $(".dish-panel-heading").on("submit", ".add-dish-form", function(e){
-    e.preventDefault();
-    var data = $(e.target).serialize()
-    var url = $(e.target).attr("action")
-    $.ajax({
-      method: "post",
-      data: data,
-      url: url
-    }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-      $(".add-dish-form").hide();
-      $(".add-dish-button").show();
-    })
-  })
-
-
-  $(".supply-panel-heading").on("submit", ".add-supply-form", function(e){
-    e.preventDefault();
-    var data = $(e.target).serialize()
-    var url = $(e.target).attr("action")
-    $.ajax({
-      method: "post",
-      data: data,
-      url: url
-    }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-      $(".add-supply-form").hide();
-      $(".add-supply-button").show();
-    })
-  })
-
-
-  $(".guest-panel-heading").on("submit", ".add-guest-form", function(e){
-    e.preventDefault();
-    var data = $(e.target).serialize()
-    var url = $(e.target).attr("action")
-    $.ajax({
-      method: "post",
-      data: data,
-      url: url
-    }).done(function(res){
-      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
-      $(".add-guest-form").hide();
-      $(".add-guest-button").show();
-    })
-  })
+  $("#drinks-table").on("click", ".item-button", claimItem);
+  $("#dish-table").on("click", ".item-button", claimItem);
+  $("#supply-table").on("click", ".item-button", claimItem);
 
 
   $(".guest-list-table").on("click", ".uninvite-button", removeRow)
@@ -151,9 +87,15 @@ $(document).ready(function(){
     })
   })
 
-  $("#drinks-table").on("click", ".item-button", claimItem)
-  $("#dish-table").on("click", ".item-button", claimItem)
-  $("#supply-table").on("click", ".item-button", claimItem);
+  function slideForm(e){
+    e.preventDefault();
+    $(e.data.formSelector).addClass("animated slideInRight").one(animOver, function(){
+      $(e.data.formSelector).removeClass("animated slideInRight")
+    })
+    $(e.data.formSelector).show();
+    $(e.data.formSelector).trigger("reset");
+    $(this).hide();
+  }
 
   function claimItem(e){
     e.preventDefault();
@@ -164,6 +106,21 @@ $(document).ready(function(){
       method: "POST",
     }).done(function(response){
       $button.parent().parent().parent().html(response)
+    })
+  }
+
+  function addRow(e){
+    e.preventDefault();
+    var data = $(e.target).serialize()
+    var url = $(e.target).attr("action")
+    $.ajax({
+      method: "post",
+      data: data,
+      url: url
+    }).done(function(res){
+      $(e.target).parent().siblings(".panel-body").children("table").prepend(res)
+      $(e.target).hide();
+      $(e.data.buttonSelector).show();
     })
   }
 
