@@ -6,9 +6,10 @@ class PartiesController < ApplicationController
       @location = @party.location.gsub(' ', '%20')
       if @party.drinks.length > 0
         @suggested_cocktails = @party.absolutAPI
+        @sampled_drink = @party.sampled_drink
       end
       if request.xhr?
-        render partial: "cocktail_recipes", locals: {suggested_cocktails: @suggested_cocktails}
+        render partial: "cocktail_recipes", locals: {suggested_cocktails: @suggested_cocktails, sampled_drink: @sampled_drink}
       else
         render "show"
       end

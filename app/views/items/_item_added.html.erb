@@ -6,7 +6,7 @@
   <%end%>
   <% unless PartyItem.find_by(item: item, party: party).list_item %>
     <div class="append-here">
-      <td><%= button_to("Add To List", party_item_list_items_path(party, item), class:"item-button" )%></td>
+      <td><%= button_to("Add To List", party_item_list_items_path(party, item), class:"item-button btn btn-primary btn-xs" )%></td>
       <td><%= link_to 'X', party_item_path(party, item), method: :delete, class: "remove-item" if host?(party)%></td>
     </div>
   <% else %>

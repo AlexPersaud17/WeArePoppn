@@ -21,10 +21,14 @@ class Party < ApplicationRecord
   end
 
   def absolutAPI
-    query = drinks.sample.name.gsub(' ', '%20')
+    query = sampled_drink.gsub(' ', '%20')
     uri = URI.parse("http://addb.absolutdrinks.com/quickSearch/drinks/#{query}/?apiKey=#{ENV["DRINK_API_KEY"]}")
     response = Net::HTTP.get_response(uri)
     body = JSON.parse(response.body)
     return body["result"].sample(3)
+  end
+
+  def sampled_drink
+    return drinks.sample.name
   end
 end
