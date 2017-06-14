@@ -3,7 +3,7 @@ class PartiesController < ApplicationController
   before_action :find_party_by_id, except: [:new, :create]
 
   def show
-    if @party && logged_in? && @party.attendees.include?(current_user)
+    if theres_a_party_and_youre_invited?
       @location = @party.location.gsub(' ', '%20')
       if @party.drinks.length > 0
         @suggested_cocktails = @party.absolutAPI
@@ -66,5 +66,9 @@ class PartiesController < ApplicationController
 
   def find_party_by_id
     @party = Party.find_by(id: params[:id])
+  end
+
+  def theres_a_party_and_youre_invited?
+    @party && logged_in? && @party.attendees.include?(current_user)
   end
 end

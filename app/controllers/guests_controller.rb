@@ -15,7 +15,7 @@ class GuestsController < ApplicationController
         redirect_to new_party_guest_path(@party)
       end
     else
-      password = [*'a'..'z',*'A'..'Z',*'0'..'9'].sample(8).join("")
+      password = temp_password
       @user = User.create(first_name:"temp", last_name: "temp", email: params[:email], password: password)
       @guest = Guest.find_or_create_by(party: @party, user: @user)
       UserMailer.invited_email(@user, password).deliver!
@@ -37,5 +37,10 @@ class GuestsController < ApplicationController
     end
   end
 
+  private
+
+  def temp_password
+    [*'a'..'z',*'A'..'Z',*'0'..'9'].sample(8).join("")
+  end
 
 end
