@@ -55,6 +55,9 @@
 .lighten {
  box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.5);
 }
+.lighten-colorize {
+ box-shadow: inset 10000px 0 0 rgba(61, 194, 215, 0.1);
+}
 .lightenish {
  box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.2);
 }
@@ -72,7 +75,7 @@
   background: url('sunset-balloons.jpeg') center center fixed;
 }
 .background3{
-  background: url('naranjas.png') center center fixed;
+  background: url('pineapple.jpeg') center center fixed;
 }
 .background4{
   background: url('water-balloons.jpeg') center center fixed;
@@ -88,6 +91,9 @@
 }
 .background8{
   background: url('summerdrinks.jpeg') center center fixed;
+}
+.background9{
+  background: url('pineapples.jpeg') center center fixed;
 }
 
 
@@ -118,7 +124,7 @@
  }
  a:hover,
  a:focus {
-   color: #5ABCB9;
+   color: #3DC2D7;
  }
  h1,
  h2,
@@ -138,7 +144,7 @@
    color: white
  }
  .bg-primary {
-   background-color: #5ABCB9;
+   background-color: #3DC2D7;
  }
  .bg-dark {
    background-color: grey;
@@ -148,7 +154,7 @@
    color: white;
  }
  section {
-   padding: 100px 0;
+   padding: 65px 0;
  }
  aside {
    padding: 50px 0;
@@ -165,7 +171,7 @@
    transition: all 0.35s;
  }
  .navbar-default .navbar-header .navbar-brand {
-   color: #5ABCB9;
+   color: #3DC2D7;
    font-family: 'Poppins', sans-serif;
    font-weight: 700;
    text-transform: uppercase;
@@ -189,17 +195,17 @@
  }
  .navbar-default .nav > li > a:hover,
  .navbar-default .nav > li > a:focus:hover {
-   color: #5ABCB9;
+   color: #3DC2D7;
  }
  .navbar-default .nav > li.active > a,
  .navbar-default .nav > li.active > a:focus {
-   color: #5ABCB9 !important;
+   color: #3DC2D7 !important;
    background-color: transparent;
  }
  .navbar-default .nav > li.active > a:hover,
  .navbar-default .nav > li.active > a:focus:hover {
    background-color: transparent;
-   color: #5ABCB9
+   color: #3DC2D7
  }
  @media (min-width: 768px) {
    .navbar-default {
@@ -241,7 +247,7 @@
    }
    .navbar-default.affix .nav > li > a:hover,
    .navbar-default.affix .nav > li > a:focus:hover {
-     color: #5ABCB9;
+     color: #3DC2D7;
    }
  }
  header {
@@ -347,7 +353,7 @@
    opacity: 0;
    display: block;
    /*hover for image background: */
-   background: #5ABCB9;
+   background: #3DC2D7;
    position: absolute;
    bottom: 0;
    text-align: center;
@@ -404,7 +410,7 @@
  .btn-default {
    margin-top: 100px;
    color: white;
-   background-color: #5ABCB9;
+   background-color: #3DC2D7;
    border-color: white;
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
@@ -491,8 +497,8 @@
  .btn-primary.disabled.active,
  .btn-primary[disabled].active,
  fieldset[disabled] .btn-primary.active {
-   background-color: #5ABCB9;
-   border-color: #5ABCB9;
+   background-color: #3DC2D7;
+   border-color: #3DC2D7;
  }
  .btn-primary .badge {
    color: #C70039;
@@ -531,7 +537,7 @@
 
  }
 footer{
-  background: #5ABCB9;
+  background: #3DC2D7;
   width: 100%;
   color: white;
   padding-top: 10px;
@@ -540,7 +546,7 @@ footer{
 }
 
 #secret {
-  color: #5ABCB9;
+  color: #3DC2D7;
 }
 .img-circle{
   width: 250px;
@@ -595,4 +601,12 @@ footer{
 #license p {
   padding-top: 50px;
 }
+
+.display-1{
+  font-size: 3.7em;
+}
+.display-2{
+  font-size: 7.5em;
+}
+
 /*235789 the blue color we use throughout the site*/

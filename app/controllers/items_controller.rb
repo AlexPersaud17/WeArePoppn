@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     if item.category == "Food"
       @recipe = item.recipeAPI
     else
-      render "./404"
+      render "errors/lost"
     end
 
   end

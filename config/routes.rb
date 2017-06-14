@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   get '/logout' => "sessions#destroy"
 
+  get '*path' => 'errors#lost'
 end
