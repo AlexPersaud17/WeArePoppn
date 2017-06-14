@@ -170,7 +170,7 @@
         <div class="panel-body">
           <%= form_for :comments, method:"post", url: "/parties/#{@party.id}/comments", html: {id: "add-comment"} do |f| %>
             <%= f.text_area :body, placeholder: 'Make a comment!', rows: "4", style: 'width:100%;'%>
-            <%= f.submit "Comment", data: { disable_with: false } %>
+            <%= f.submit "Comment", data: { disable_with: false }, class: "btn btn-primary btn-xs" %>
           <%end%>
 
         </div>

@@ -55,22 +55,27 @@
 .lighten {
  box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.5);
 }
+.lightenish {
+ box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.2);
+}
 
 .darken {
  box-shadow: inset 10000px 0 0 rgba(0, 0, 0, 0.5);
 }
-
+.item-button, .remove-item{
+  float: right;
+}
 .background1{
   background: url('balloons.jpeg') center center fixed;
 }
 .background2{
-  background: url('water-balloons.jpeg') center center fixed;
+  background: url('sunset-balloons.jpeg') center center fixed;
 }
 .background3{
   background: url('naranjas.png') center center fixed;
 }
 .background4{
-  background: url('plaid.jpg') center center fixed;
+  background: url('water-balloons.jpeg') center center fixed;
 }
 .background5{
   background: url('ripples.jpg') center center fixed;
@@ -446,7 +451,7 @@
  }
  .btn-primary {
    color: white;
-   background-color: #5ABCB9;
+   background-color: #5DADE2;
    border-color: #F05F40;
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
@@ -459,7 +464,7 @@
  .btn-primary.active,
  .open > .dropdown-toggle.btn-primary {
    color: white;
-   background-color: #ee4b28;
+   background-color: #82E0AA;
    border-color: #ed431f;
  }
  .btn-primary:active,
@@ -489,7 +494,7 @@
    border-color: #5ABCB9;
  }
  .btn-primary .badge {
-   color: #F05F40;
+   color: #C70039;
    background-color: white;
  }
  .btn {
