@@ -10,6 +10,7 @@
           <%=link_to "Throw A Party", new_party_path%>
         </div>
         <div class="panel-body">
+          <% if @user.hosted_parties.length > 0 %>
           <table class="table-striped table">
             <tr>
               <th>Party</th>
@@ -22,6 +23,9 @@
             </tr>
             <%end%>
           </table>
+          <% else %>
+           <h3>What are you waiting for? Start one already!</h3>
+           <%end %>
         </div>
         </div>
       </div>
