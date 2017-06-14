@@ -191,31 +191,13 @@ $(document).ready(function(){
     })
   })
 
-  $("#drinks-table").on("click", ".item-button", function(e){
-    e.preventDefault();
-    var $button=$(this)
-    var url = $(this).parent().attr('action')
-    $.ajax({
-      url: url,
-      method: "POST",
-    }).done(function(response){
-      $button.parent().parent().parent().html(response)
-    })
-  })
+  $("#drinks-table").on("click", ".item-button", claimItem)
 
-  $("#dish-table").on("click", ".item-button", function(e){
-    e.preventDefault();
-    var $button=$(this)
-    var url = $(this).parent().attr('action')
-    $.ajax({
-      url: url,
-      method: "POST",
-    }).done(function(response){
-      $button.parent().parent().parent().html(response)
-    })
-  })
+  $("#dish-table").on("click", ".item-button", claimItem)
 
-  $("#supply-table").on("click", ".item-button", function(e){
+  $("#supply-table").on("click", ".item-button", claimItem);
+
+  function claimItem(e){
     e.preventDefault();
     var $button=$(this)
     var url = $(this).parent().attr('action')
@@ -225,6 +207,6 @@ $(document).ready(function(){
     }).done(function(response){
       $button.parent().parent().parent().html(response)
     })
-  })
+  }
 
 })
