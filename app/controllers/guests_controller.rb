@@ -1,11 +1,11 @@
 class GuestsController < ApplicationController
+
+  before_action :find_party
   def new
     @guest = Guest.new
-    @party = Party.find_by(id: params[:party_id])
   end
 
   def create
-    @party = Party.find_by(id: params[:party_id])
     @user = User.find_by(email: params[:email])
     if @user
       @guest = Guest.find_or_create_by(party: @party, user: @user)
@@ -29,7 +29,6 @@ class GuestsController < ApplicationController
   end
 
   def destroy
-    @party = Party.find_by(id: params[:party_id])
     @user = User.find_by(id: params[:id])
     @guest = Guest.find_by(party: @party, user: @user)
     @guest.destroy
@@ -37,4 +36,6 @@ class GuestsController < ApplicationController
       redirect_to host?(@party) ?  @party : @user
     end
   end
+
+
 end

@@ -1,7 +1,8 @@
 class PartiesController < ApplicationController
 
+  before_action :find_party_by_id, except: [:new, :create]
+
   def show
-    @party = Party.find_by(id: params[:id])
     if @party && logged_in? && @party.attendees.include?(current_user)
       @location = @party.location.gsub(' ', '%20')
       if @party.drinks.length > 0
@@ -21,6 +22,9 @@ class PartiesController < ApplicationController
     @party = Party.new
   end
 
+  def edit
+  end
+
   def create
     @party = current_user.hosted_parties.new(party_params)
     if @party.save
@@ -32,18 +36,7 @@ class PartiesController < ApplicationController
     end
   end
 
-  def destroy
-    @party = Party.find_by(id: params[:id])
-    @party.destroy
-    redirect_to "/users/#{current_user.id}"
-  end
-
-  def edit
-    @party = Party.find_by(id: params[:id])
-  end
-
   def update
-    @party = Party.find_by(id: params[:id])
     @party.assign_attributes(party_params)
     if @party.save
       if request.xhr?
@@ -61,8 +54,17 @@ class PartiesController < ApplicationController
     end
   end
 
+  def destroy
+    @party.destroy
+    redirect_to "/users/#{current_user.id}"
+  end
+
   private
   def party_params
     params.require(:party).permit(:name, :description, :location, :date)
+  end
+
+  def find_party_by_id
+    @party = Party.find_by(id: params[:id])
   end
 end
