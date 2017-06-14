@@ -588,5 +588,11 @@ footer{
 	}
 }
 
+#license a {
+  color: white;
+}
 
+#license p {
+  padding-top: 50px;
+}
 /*235789 the blue color we use throughout the site*/
