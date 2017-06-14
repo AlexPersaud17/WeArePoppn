@@ -10,6 +10,7 @@
           <%=link_to "Throw A Party", new_party_path%>
         </div>
         <div class="panel-body">
+          <% if @user.hosted_parties.length > 0 %>
           <table class="table-striped table">
             <tr>
               <th>Party</th>
@@ -22,6 +23,9 @@
             </tr>
             <%end%>
           </table>
+          <% else %>
+           <h3>What are you waiting for? Start one already!</h3>
+           <%end %>
         </div>
         </div>
       </div>
@@ -35,6 +39,7 @@
       <h3 class="panel-title">Parties I'm Attending</h3>
     </div>
     <div class="panel-body">
+      <% if @user.attended_parties.length > 0 %>
       <table class="table table-striped">
         <tr>
           <th>Party</th>
@@ -49,6 +54,9 @@
         </tr>
         <%end%>
       </table>
+      <%else%>
+      <h3>Sorry, No one wants you around......Yet!</h3>
+      <%end%>
     </div>
   </div>
   </div>
@@ -62,7 +70,7 @@
     <div class="panel-body">
 
       <div class="panel-group">
-
+        <% if @user.guests.length > 0 %>
         <% @user.guests.each do |guest| %>
         <div class="panel panel-info party<%=guest.party.id%>">
           <div class="panel-heading">
@@ -93,6 +101,9 @@
         </div>
 
         <%end%>
+        <%else%>
+        <h3>No parties means nothing to buy!</h3>
+        <%end %>
 
       </div>
 

@@ -78,7 +78,7 @@
   background: url('water-balloons.jpeg') center center fixed;
 }
 .background5{
-  background: url('ripples.jpg') center center fixed;
+  background: url('candles.jpeg') center center fixed;
 }
 .background6{
   background: url('wild-sea.png') center center fixed;
@@ -531,6 +531,7 @@
  }
 footer{
   background: #5ABCB9;
+  width: 100%;
   color: white;
   padding-top: 10px;
   padding-bottom: 15px;
