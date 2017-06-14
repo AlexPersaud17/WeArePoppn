@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $("#drinks-table").on("click", ".item-button", function(e){
     e.preventDefault();
-    $button=$(this)
-    url = $(this).parent().attr('action')
+    var $button=$(this)
+    var url = $(this).parent().attr('action')
     $.ajax({
       url: url,
       method: "POST",

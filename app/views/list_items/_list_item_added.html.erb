@@ -5,9 +5,13 @@
 <%end%>
 <% unless PartyItem.find_by(party: party, item: item).list_item %>
   <div class="append-here">
-    <td><%= button_to("Add To List", party_item_list_items_path(party, item), class:"item-button" )%></td>
+    <td><%= button_to("Add To List", party_item_list_items_path(party, item), class:"item-button btn btn-primary btn-xs" )%></td>
     <td><%= link_to 'X', party_item_path(party, item), method: :delete, class: "remove-item" if host?(party)%></td>
   </div>
 <% else %>
-  <td>Will be brought by: <%=PartyItem.find_by(party: party, item: item).user.full_name%></td>
+  <%if PartyItem.find_by(item: item, party: party).user == current_user%>
+    <td><%= button_to("Remove From Your List", party_item_list_item_path(party, item, list_item), method: :delete, class: "remove-user-item btn btn-primary btn-xs")%></td>
+  <%else%>
+    <td>Will be brought by: <%=PartyItem.find_by(item: item, party: party).user.full_name%></td>
+  <%end%>
 <%end%>
