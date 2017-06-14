@@ -102,20 +102,11 @@ $(document).ready(function(){
     })
   })
 
-  $(".guest-list-table").on("click", ".uninvite-button", function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    var url = $(e.target).attr("href")
-    var $row = $(e.target).parent().parent()
-    $.ajax({
-      method: "delete",
-      url: url
-    }).done(function(res){
-      $row.remove();
-    })
-  })
+  $(".guest-list-table").on("click", ".uninvite-button", removeRow)
 
-  $(".item-list-table").on("click", ".remove-item", function(e){
+  $(".item-list-table").on("click", ".remove-item", removeRow)
+
+  function removeRow(e){
     e.preventDefault();
     e.stopPropagation();
     var url = $(e.target).attr("href")
@@ -126,7 +117,9 @@ $(document).ready(function(){
     }).done(function(res){
       $row.remove();
     })
-  })
+  }
+
+
 
   $(".cocktail-refresh").on("click", function(e){
     e.preventDefault();
