@@ -2,15 +2,22 @@ $(document).ready(function(){
 
   var animOver = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
-  $(".add-drinks-button").on("click", function(e){
+  $(".add-drinks-button").on("click", { formSelector: ".add-drinks-form" }, slideForm);
+  $(".add-dish-button").on("click", { formSelector: ".add-dish-form" }, slideForm);
+  $(".add-supply-button").on("click", { formSelector: ".add-supply-form" }, slideForm);
+  $(".add-guest-button").on("click", { formSelector: ".add-guest-form" }, slideForm)
+
+  function slideForm(e){
     e.preventDefault();
-    $(".add-drinks-form").addClass("animated slideInRight").one(animOver, function(){
-      $(".add-drinks-form").removeClass("animated slideInRight")
+    $(e.data.formSelector).addClass("animated slideInRight").one(animOver, function(){
+      $(e.data.formSelector).removeClass("animated slideInRight")
     })
-    $(".add-drinks-button").hide();
-    $(".add-drinks-form").show();
-    $(".add-drinks-form").trigger("reset");
-  })
+    $(e.data.formSelector).show();
+    $(e.data.formSelector).trigger("reset");
+    $(this).hide();
+  }
+
+
 
   $(".drinks-panel-heading").on("submit", ".add-drinks-form", function(e){
     e.preventDefault();
@@ -27,15 +34,6 @@ $(document).ready(function(){
     })
   })
 
-  $(".add-dish-button").on("click", function(e){
-    e.preventDefault();
-    $(".add-dish-form").addClass("animated slideInRight").one(animOver, function(){
-      $(".add-dish-form").removeClass("animated slideInRight")
-    })
-    $(".add-dish-form").show();
-    $(".add-dish-form").trigger("reset");
-    $(".add-dish-button").hide();
-  })
 
   $(".dish-panel-heading").on("submit", ".add-dish-form", function(e){
     e.preventDefault();
@@ -52,15 +50,6 @@ $(document).ready(function(){
     })
   })
 
-  $(".add-supply-button").on("click", function(e){
-    e.preventDefault();
-    $(".add-supply-form").addClass("animated slideInRight").one(animOver, function(){
-      $(".add-supply-form").removeClass("animated slideInRight")
-    })
-    $(".add-supply-form").show();
-    $(".add-supply-form").trigger("reset");
-    $(".add-supply-button").hide();
-  })
 
   $(".supply-panel-heading").on("submit", ".add-supply-form", function(e){
     e.preventDefault();
@@ -77,15 +66,6 @@ $(document).ready(function(){
     })
   })
 
-  $(".add-guest-button").on("click", function(e){
-    e.preventDefault();
-    $(".add-guest-form").addClass("animated slideInRight").one(animOver, function(){
-      $(".add-guest-form").removeClass("animated slideInRight")
-    })
-    $(".add-guest-form").show();
-    $(".add-guest-form").trigger("reset");
-    $(".add-guest-button").hide();
-  })
 
   $(".guest-panel-heading").on("submit", ".add-guest-form", function(e){
     e.preventDefault();
@@ -102,22 +82,9 @@ $(document).ready(function(){
     })
   })
 
+
   $(".guest-list-table").on("click", ".uninvite-button", removeRow)
-
   $(".item-list-table").on("click", ".remove-item", removeRow)
-
-  function removeRow(e){
-    e.preventDefault();
-    e.stopPropagation();
-    var url = $(e.target).attr("href")
-    var $row = $(e.target).parent().parent()
-    $.ajax({
-      method: "delete",
-      url: url
-    }).done(function(res){
-      $row.remove();
-    })
-  }
 
 
 
@@ -185,9 +152,7 @@ $(document).ready(function(){
   })
 
   $("#drinks-table").on("click", ".item-button", claimItem)
-
   $("#dish-table").on("click", ".item-button", claimItem)
-
   $("#supply-table").on("click", ".item-button", claimItem);
 
   function claimItem(e){
@@ -199,6 +164,19 @@ $(document).ready(function(){
       method: "POST",
     }).done(function(response){
       $button.parent().parent().parent().html(response)
+    })
+  }
+
+  function removeRow(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var url = $(e.target).attr("href")
+    var $row = $(e.target).parent().parent()
+    $.ajax({
+      method: "delete",
+      url: url
+    }).done(function(res){
+      $row.remove();
     })
   }
 
