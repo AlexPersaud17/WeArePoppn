@@ -1,21 +1,25 @@
-<% suggested_cocktails.each do |cocktail|%>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h4 class="panel-title"><%=cocktail["name"]%></h4>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-6">
-            <p><%=cocktail["descriptionPlain"]%></p>
-          </div>
-          <div class="col-xs-6">
-            <ul>
-              <%cocktail["ingredients"].each do |ingredient|%>
-                <li><%=ingredient["text"]%></li>
-              <%end%>
-            </ul>
-          </div>
+<% if @suggested_cocktails.length != 0 %>
+  <% suggested_cocktails.each do |cocktail|%>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title"><%=cocktail["name"]%></h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <p><%=cocktail["descriptionPlain"]%></p>
+        </div>
+        <div class="col-xs-6">
+          <ul>
+            <%cocktail["ingredients"].each do |ingredient|%>
+            <li><%=ingredient["text"]%></li>
+            <%end%>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
+  <%end%>
+<%else%>
+  <h3>Couldn't find any solid recipes for <%=@sampled_drink%>, try shaking again!</h3>
 <%end%>
