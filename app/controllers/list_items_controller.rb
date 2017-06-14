@@ -3,9 +3,9 @@ class ListItemsController < ApplicationController
   before_action :find_party_item_and_guest
 
   def create
-    list_item = ListItem.find_or_create_by(guest: @guest, party_item: @party_item)
+    @list_item = ListItem.find_or_create_by(guest: @guest, party_item: @party_item)
     if request.xhr?
-      render partial: "list_item_added", locals:{item: @item, party: @party}
+      render partial: "list_item_added", locals:{item: @item, party: @party, list_item: @list_item}
     else
       redirect_to @party
     end
@@ -17,7 +17,11 @@ class ListItemsController < ApplicationController
     list_item.destroy
     if request.xhr?
       if @guest.list_items.empty?
-        render :partial => "./guests/empty_list"
+        if request.referer.include?("parties")
+          render partial: "list_item_added", locals: {item: @item, party: @party, list_item: @list_item}
+        else
+          render partial: "./guests/empty_list"
+        end
       end
     else
       redirect_to current_user

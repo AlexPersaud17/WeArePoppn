@@ -10,6 +10,10 @@
       <td><%= link_to 'X', party_item_path(party, item), method: :delete, class: "remove-item" if host?(party)%></td>
     </div>
   <% else %>
-    <td>Will be brought by: <%=PartyItem.find_by(item: item, party: party).user.full_name%></td>
+    <%if PartyItem.find_by(item: item, party: party).user == current_user%>
+      <td><%= button_to("Remove From Your List", party_item_list_item_path(party, item), method: :delete, class: "remove-user-item btn btn-primary btn-xs")%></td>
+    <%else%>
+      <td>Will be brought by: <%=PartyItem.find_by(item: item, party: party).user.full_name%></td>
+    <%end%>
   <%end%>
 </tr>
