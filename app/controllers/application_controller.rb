@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
     false
   end
 
-  
+  def find_party
+    @party = Party.find_by(id: params[:party_id])
+  end
+
+
 
   helper_method :unauthorized
   helper_method :current_user
