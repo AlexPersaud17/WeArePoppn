@@ -15,7 +15,7 @@ class PartiesController < ApplicationController
         render "show"
       end
     else
-      render "./404"
+      render "errors/lost"
     end
   end
 

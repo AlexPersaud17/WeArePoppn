@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if logged_in?
       @user = current_user
     else
-      render "./404"
+      render "errors/lost"
     end
   end
 

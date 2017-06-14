@@ -6046,7 +6046,7 @@ button.close {
  }
  a:hover,
  a:focus {
-   color: #5ABCB9;
+   color: #3DC2D7;
  }
  h1,
  h2,
@@ -6066,7 +6066,7 @@ button.close {
    color: white
  }
  .bg-primary {
-   background-color: #5ABCB9;
+   background-color: #3DC2D7;
  }
  .bg-dark {
    background-color: grey;
@@ -6093,7 +6093,7 @@ button.close {
    transition: all 0.35s;
  }
  .navbar-default .navbar-header .navbar-brand {
-   color: #5ABCB9;
+   color: #3DC2D7;
    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
    font-weight: 700;
    text-transform: uppercase;
@@ -6117,17 +6117,17 @@ button.close {
  }
  .navbar-default .nav > li > a:hover,
  .navbar-default .nav > li > a:focus:hover {
-   color: #5ABCB9;
+   color: #3DC2D7;
  }
  .navbar-default .nav > li.active > a,
  .navbar-default .nav > li.active > a:focus {
-   color: #5ABCB9 !important;
+   color: #3DC2D7 !important;
    background-color: transparent;
  }
  .navbar-default .nav > li.active > a:hover,
  .navbar-default .nav > li.active > a:focus:hover {
    background-color: transparent;
-   color: #5ABCB9
+   color: #3DC2D7
  }
  @media (min-width: 768px) {
    .navbar-default {
@@ -6169,7 +6169,7 @@ button.close {
    }
    .navbar-default.affix .nav > li > a:hover,
    .navbar-default.affix .nav > li > a:focus:hover {
-     color: #5ABCB9;
+     color: #3DC2D7;
    }
  }
  header {
@@ -6275,7 +6275,7 @@ button.close {
    opacity: 0;
    display: block;
    /*hover for image background: */
-   background: #5ABCB9;
+   background: #3DC2D7;
    position: absolute;
    bottom: 0;
    text-align: center;
@@ -6332,7 +6332,7 @@ button.close {
  .btn-default {
    margin-top: 100px;
    color: white;
-   background-color: #5ABCB9;
+   background-color: #3DC2D7;
    border-color: white;
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
@@ -6380,7 +6380,7 @@ button.close {
  }
  .btn-primary {
    color: white;
-   background-color: #5ABCB9;
+   background-color: #3DC2D7;
    border-color: #F05F40;
    -webkit-transition: all 0.35s;
    -moz-transition: all 0.35s;
@@ -6419,8 +6419,8 @@ button.close {
  .btn-primary.disabled.active,
  .btn-primary[disabled].active,
  fieldset[disabled] .btn-primary.active {
-   background-color: #5ABCB9;
-   border-color: #5ABCB9;
+   background-color: #3DC2D7;
+   border-color: #3DC2D7;
  }
  .btn-primary .badge {
    color: #F05F40;
@@ -6459,7 +6459,7 @@ button.close {
 
  }
 footer{
-  background: #5ABCB9;
+  background: #3DC2D7;
   color: white;
   padding-top: 10px;
   padding-bottom: 15px;
@@ -6467,7 +6467,7 @@ footer{
 }
 
 #secret {
-  color: #5ABCB9;
+  color: #3DC2D7;
 }
 .img-circle{
   width: 250px;
