@@ -36,7 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
-
+gem 'sprockets', '3.6.3'
 gem 'rb-readline'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
